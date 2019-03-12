@@ -1,0 +1,202 @@
+.indexBox {
+    width: 100%;
+    height: 100%;
+    background: #F6F6F6;
+}
+
+.indexBox .header {
+    width: 100%;
+    position: relative;
+}
+
+.indexBox .header .invisibility {
+    width: 100%;
+    height: 320rpx;
+    background: rgba(0, 0, 0, .25);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.indexBox .header image {
+    width: 100%;
+    height: 320rpx;
+}
+
+.indexBox .header .content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.indexBox .header .content .userImages {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 100%;
+    margin-bottom: 20rpx;
+    border: 3rpx solid #fff;
+}
+
+.indexBox .header .content .userName {
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #FFFFFF;
+    letter-spacing: 0;
+}
+
+.indexBox .navBox {
+    height: 304rpx;
+    background: #fff;
+    padding: 24rpx;
+    box-sizing: border-box;
+}
+
+.indexBox .navBox .navHeader {
+    display: flex;
+    justify-content: space-between;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #444444;
+    letter-spacing: 0;
+    /* margin-bottom: 24rpx; */
+    padding-bottom: 30rpx;
+}
+
+.indexBox .navBox .navHeader image {
+    width: 16rpx;
+    height: 28rpx;
+    margin-right: 14rpx;
+}
+
+.indexBox .navBox .navHeader .right {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #A1A1A1;
+    letter-spacing: 0;
+}
+
+.indexBox .navBox .navHeader .right .text {
+    margin-right: 20rpx;
+}
+
+.indexBox .navBox .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 44rpx 0 26rpx 0;
+}
+
+.indexBox .navBox .content .contentItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.indexBox .navBox .content .contentItem .dealWithNum {
+    position: absolute;
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    color: #FFFFFF;
+    background: #F03340;
+    border-radius: 100px;
+    height: 34rpx;
+    padding: 0 12rpx;
+    top: -15rpx;
+    left: 40rpx;
+    line-height: 34rpx;
+}
+
+.indexBox .navBox .content .contentItem .imgBox {
+    position: relative
+}
+
+.indexBox .navBox .content .contentItem .img {
+    width: 60rpx;
+    height: 60rpx;
+    margin-bottom: 24rpx;
+}
+
+.indexBox .navBox .content .contentItem .text {
+    font-family: PingFangSC-Regular;
+    font-size: 26rpx;
+    color: #444444;
+    letter-spacing: 0;
+}
+
+.indexBox .jionUs {
+    height: 250rpx;
+    width: 100%;
+    background: #D8D8D8;
+    margin: 20rpx 0;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #444444;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 250rpx;
+}
+
+.indexBox .footer {
+    background: #fff;
+    padding: 0 24rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    color: #444444;
+    letter-spacing: 0;
+}
+
+.indexBox .footer .footerItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30rpx 0;
+}
+
+.indexBox .footer .footerItem {
+    border-top: 1px solid #E8E8E8;
+}
+
+.indexBox .footer .footerItem>image {
+    width: 16rpx;
+    height: 28rpx;
+}
+
+.indexBox .footer .footerItem .left {
+    display: flex;
+    align-items: center;
+}
+
+.indexBox .footer .footerItem .left>image {
+    width: 38rpx;
+    height: 38rpx;
+    margin-right: 21rpx;
+}
+
+.unLogin {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+}
+
+.unLogin button {
+    height: 100%;
+    background: rgba(0, 0, 0, .1);
+}
+
+.unLogin button image {
+    height: 800rpx;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}

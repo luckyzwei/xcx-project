@@ -1,0 +1,79 @@
+<scroll-view class="indexBox" scroll-y>
+    <view class="header">
+        <view class="invisibility"></view>
+        <image src='/images/pic_me_profilebg@2x.png'></image>
+        <view class="content">
+            <image class="userImages" src='{{userMessage.imageUrl}}'></image>
+            <view class="userName">{{userMessage.userName}}</view>
+        </view>
+    </view>
+    <view class="navBox">
+        <view class="navHeader border-bottom">
+            <text class="left">订单管理</text>
+            <view class="right" bindtap='changeOrderStuts' data-invalue='0'>
+                <text class="text">全部订单</text>
+                <image src='/images/ic_list_arrow@2x.png' />
+            </view>
+        </view>
+        <view class="content">
+            <view class="contentItem" bindtap='changeOrderStuts' data-invalue='1'>
+                <view class="imgBox">
+                    <view class="dealWithNum" wx:if='{{orderStarts.unpaidCount}}'>{{orderStarts.unpaidCount}}</view>
+                    <image class="img" src='/images/ic_lizstore_order_unpaid@2x.png' />
+                </view>
+                <text class="text">待支付</text>
+            </view>
+            <view class="contentItem" bindtap='changeOrderStuts' data-invalue='2'>
+                <view class="imgBox">
+                    <view class="dealWithNum" wx:if='{{orderStarts.undeliverCount}}'>{{orderStarts.undeliverCount}}</view>
+                    <image class="img" src='/images/ic_lizstore_order_undelivered@2x.png' />
+                </view>
+                <text class="text">待发货</text>
+            </view>
+            <view class="contentItem" bindtap='changeOrderStuts' data-invalue='5'>
+                <view class="imgBox">
+                    <view class="dealWithNum" wx:if='{{orderStarts.unconfirmedCount}}'>{{orderStarts.unconfirmedCount}}</view>
+                    <image class="img" src='/images/ic_lizstore_order_delivered@2x.png' />
+                </view>
+                <text class="text">已发货</text>
+            </view>
+            <!-- <view class="contentItem">
+                <view class="imgBox">
+                    <view class="dealWithNum">999</view>
+                    <image class="img" src='/images/ic_lizstore_order_uncomment@2x.png'/>
+                </view>
+                <text class="text">待评价</text>
+            </view> -->
+            <view class="contentItem" bindtap='changeOrderStuts' data-invalue='168'>
+                <view class="imgBox">
+                    <view class="dealWithNum" wx:if='{{false}}'></view>
+                    <image class="img" src='/images/ic_lizstore_order_refund@2x.png' />
+                </view>
+                <text class="text">退款/售后</text>
+            </view>
+        </view>
+    </view>
+    <!-- <view class="jionUs">
+        <text>加入合伙人入口预留banner位</text>
+    </view> -->
+    <view class="footer">
+        <view bindtap='adrMessage' class="footerItem">
+            <view class="left">
+                <text>我的收货地址</text>
+            </view>
+            <image src='/images/ic_list_arrow@2x.png' />
+        </view>
+        <!-- <view bindtap='goinviteFD' class="footerItem">
+            <view class="left">
+                <image src='/images/ic_me_invite@2x.png'/>
+                <text>邀请好友</text>
+            </view>
+            <image src='/images/ic_list_arrow@2x.png'/>
+        </view> -->
+    </view>
+    <view class="unLogin" wx:if='{{!hasUserInfo}}'>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            <image src='/images/logoImg.png' />
+        </button>
+    </view>
+</scroll-view>
