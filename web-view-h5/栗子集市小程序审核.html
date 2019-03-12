@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>栗子集市小程序审核</title>
+        <style>
+            .main {
+                width: 500px;
+                height: 500px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+
+            }
+
+            .btn {
+                width: 100%;
+                height: 100px;
+                border-radius: 100px;
+                text-align: center;
+                line-height: 100px;
+                background: #01aaef;
+                color: #FFF;
+                margin-bottom: 100px;
+                cursor: pointer;
+            }
+        </style>
+        <script src="jquery.js"></script>
+    </head>
+
+    <body>
+        <div class="main">
+            <div class="btn check">栗子集市 提交审核</div>
+            <div class="btn pro">栗子集市 发布生产</div>
+        </div>
+        <script>
+            $(function () {
+                $(".check").on("click", function (e) {
+                    let s = {
+                        "id": "f9062967-89a3-11e8-aba2-02795fd21796",
+                        "code": "171122134617153",
+                        "category": null,
+                        "name": null,
+                        "status": 1,
+                        "type": 3,
+                        "contactor": null,
+                        "phone": null,
+                        "email": null,
+                        "logoPath": null,
+                        "agentId": null,
+                        "agentUserId": null,
+                        "description": "0",
+                        "createDate": 1511329577000,
+                        "updateDate": 1530529291000
+                    }
+                    let a = JSON.stringify(s);
+                    $.ajax({
+                        method: "PUT",
+                        url: "http://cloud.gemii.cc/lizcloud/api/tenantbase-mgmt/noauth/tenantbase/tenant/f9062967-89a3-11e8-aba2-02795fd21796",
+                        headers: {
+                            "Content-Type": "application/json;charset=UTF-8"
+                        },
+                        dataType: "json",
+                        data: a,
+                        success: function (e) {
+                            if (e.resultCode === '100') {
+                                console.log(e);
+                                alert("审核状态")
+                            }
+                        },
+                        error: function (e) {
+                            console.log("Error" + e)
+                        }
+                    })
+                })
+                $(".pro").on("click", function (e) {
+                    $.ajax({
+                        method: "PUT",
+                        url: "http://cloud.gemii.cc/lizcloud/api/tenantbase-mgmt/noauth/tenantbase/tenant/f9062967-89a3-11e8-aba2-02795fd21796",
+                        headers: {
+                            "Content-Type": "application/json;charset=UTF-8"
+                        },
+                        dataType: "json",
+                        data: JSON.stringify({
+                            "id": "f9062967-89a3-11e8-aba2-02795fd21796",
+                            "code": "171122134617153",
+                            "category": null,
+                            "name": null,
+                            "status": 1,
+                            "type": 3,
+                            "contactor": null,
+                            "phone": null,
+                            "email": null,
+                            "logoPath": null,
+                            "agentId": null,
+                            "agentUserId": null,
+                            "description": "分离代理商",
+                            "createDate": 1511329577000,
+                            "updateDate": 1530529291000
+                        }),
+                        success: function (e) {
+                            if (e.resultCode === '100') {
+                                console.log(e);
+                                alert("生产状态")
+                            }
+                        },
+                        error: function (e) {
+                            console.log("Error" + e)
+                        }
+                    })
+                })
+            })
+        </script>
+    </body>
+
+</html>
