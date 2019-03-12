@@ -1,0 +1,20 @@
+
+    <view class="sell-apply">
+    <view class="sell-apply-title color4">店铺认证</view>
+    <view class="sell-apply-from">
+        <view class="sell-apply-from-item">
+            <text class="sell-apply-from-ite-text color4">姓名</text>
+            <input class="sell-apply-from-item-ipt bgColorF6 color4 borderF6" placeholder="请输入你的名字" placeholder-class="colorA1" bindinput="changeName"/>
+        </view>
+        <view class="sell-apply-from-item">
+            <text class="sell-apply-from-ite-text color4">手机</text>
+            <input class="sell-apply-from-item-ipt bgColorF6 color4 borderF6" type="number" placeholder="请输入手机号码" placeholder-class="colorA1" bindinput="changePhone"/>
+        </view>
+        <view class="sell-apply-from-item">
+            <text class="sell-apply-from-ite-text color4">门店</text>
+            <input class="sell-apply-from-item-ipt bgColorF6 color4 borderF6" placeholder="请输入你的门店名称" placeholder-class="colorA1" bindinput="changeStore"/>
+        </view>
+    </view>
+    <view class="sell-apply-footer" bindtap="submitApply">提交</view>
+    <view class="ad_popError"  wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+</view>

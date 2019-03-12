@@ -1,0 +1,71 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.98",
+	"appid": "wx5dcfaad36777e61d",
+	"projectname": "wepyWexx",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "cerate",
+					"pathName": "pages/sell/secKill/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "withdraw",
+					"pathName": "pages/sell/withdraw/index",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "record",
+					"pathName": "pages/sell/record/index",
+					"query": "scene=6388de1c-1f71-44b1-9a85-e540f79f0958"
+				},
+				{
+					"id": -1,
+					"name": "poster",
+					"pathName": "pages/sell/poster/index",
+					"query": "scene=6388de1c-1f71-44b1-9a85-e540f79f0958"
+				},
+				{
+					"id": -1,
+					"name": "buyerKill",
+					"pathName": "pages/buyer/secKill/index",
+					"query": "scene=6388de1c-1f71-44b1-9a85-e540f79f0958"
+				}
+			]
+		}
+	}
+}

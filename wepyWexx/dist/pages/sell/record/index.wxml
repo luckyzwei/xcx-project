@@ -1,0 +1,30 @@
+
+    <view class="sell-record">
+    <view class="sell-record-header">
+        <view class="sell-record-header-content">
+            <image class="sell-record-header-content-img" src="{{dataList.skuPic}}"/>
+            <view class="sell-record-header-content-text">{{dataList.skuName}}</view>
+        </view>
+    </view>
+    <view class="sell-record-list color4"  wx:if="{{!dataList.orderRecords.length}}">
+        <view class="sell-record-list-nolist">
+            还没有客户抢购哦…
+        </view>
+    </view>
+    <view class="sell-record-list color4"  wx:else>
+        <view class="sell-record-list-title">
+            <text>买家手机号</text>
+            <text>购买时间</text>
+            <text>支付方式</text>
+        </view>
+        <scroll-view class="sell-record-list-content" scroll-y bindscrolltolower="getListLower">
+            <block class="sell-record-list-item" wx:for="{{dataList.orderRecords}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                <text>{{item.buyerPhone}}</text>
+                <text>{{item.createTime}}</text>
+                <text>{{item.payType}}</text>
+            </block>
+            <view class="sell-record-list-item kong"/>
+        </scroll-view>
+    </view>
+    <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+</view>

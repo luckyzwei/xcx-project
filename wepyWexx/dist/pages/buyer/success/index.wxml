@@ -1,0 +1,16 @@
+
+    <!--pages/buyer/success/index.wxml-->
+<view class="success-main">
+    <view class="success" style="background: url('https://cloud.gemii.cc/lizcloud/fs/noauth/media/5af5676c8c34ba0032eea265') no-repeat;background-size: 100%;">
+        <view class="order">
+            <view class="goodImage" style="background: url({{coverPhoto}}) no-repeat;background-size: cover;background-position: center"/>
+            <view class="goodName">{{goodName}}</view>
+            <view class="address">
+                <image class="icon-address" src="/images/ic_location@3x.png"/>
+                <text class="text">{{address}}</text>
+            </view>
+            <view class="tip"  wx:if="{{code==8}}">*请凭手机号码到店付款并取货</view>
+            <view class="tip"  wx:else>*请凭手机号码到店取货</view>
+        </view>
+    </view>
+</view>

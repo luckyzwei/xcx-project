@@ -1,0 +1,127 @@
+
+    <view style="height:100%;width:100%">
+      
+<view  wx:if="{{$wecroppers$showstatus}}" style="background:black;position: fixed;top:0;left: 0; z-index: 99999;height: 100%;width:100%">
+             <canvas class="cropper" disable-scroll="true" bindtouchstart="$wecroppers$touchStart" bindtouchmove="$wecroppers$touchMove" bindtouchend="$wecroppers$touchEnd" style="width:{{$wecroppers$cropperopt.width}}px;height:{{$wecroppers$cropperopt.height}}px;background-color: rgba(0, 0, 0, 0.8);" canvas-id="{{$wecroppers$cropperopt.id}}">
+        </canvas>
+            <view class="cropper-buttons">
+                <view class="getCropperImage" bindtap="$wecroppers$getCropperImage">生成图片</view>
+            </view>
+        </view>
+
+        <view class="sell-secKill">
+            <view class="sell-secKill-header">
+                <view class="sell-secKill-header-top">
+                    <image bindtap="selectImg" class="sell-secKill-header-top-upload sell-secKill-header-top-image" src="/images/pic_upload@3x.png"  wx:if="{{!imgUrl}}"/>
+                    <view class="sell-secKill-header-top-box borderF6 sell-secKill-header-top-image" bindtap="selectImg"  wx:else>
+                        <view class="sell-secKill-header-top-image" style="background-image:url({{imgUrl}})"/>
+                        <!--<image mode='aspectFit' class="sell-secKill-header-top-image" src="{{imgUrl}}"/>-->
+                        <view class="sell-secKill-header-top-btn">点击更换图片</view>
+                    </view>
+                </view>
+                <view class="sell-secKill-header-from">
+
+                    <view class="sell-secKill-header-from-item">
+                        <text class="color4 item-title">商品标题</text>
+                        <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+                            <input maxlength="30" bindinput="changeName" class="item-ipt" placeholder="添加商品名称" placeholder-class="colorA1"/>
+                        </view>
+                        <view class="colorRed">*</view>
+                    </view>
+                    <view class="sell-secKill-header-from-item">
+                        <view class="sell-secKill-header-from-item">
+                            <text class="color4 item-title">秒杀价</text>
+                            <view class="ipt-box bgColorF6 borderF6 item-ipt-s">
+                                <text class="color4 item-price">¥</text>
+                                <input type="digit" maxlength="10" bindinput="changeKillPrice" value="{{fromData.costPrice}}" class="color4 item-ipt" placeholder="0.00" placeholder-class="colorA1"/>
+                            </view>
+                            <view class="colorRed">*</view>
+                        </view>
+                        <view class="sell-secKill-header-from-item">
+                            <text class="color4 item-title">原价</text>
+                            <view class="ipt-box bgColorF6 borderF6 item-ipt-s">
+                                <text class="color4 item-price">¥</text>
+                                <input type="digit" maxlength="10" bindinput="changeOldPrice" value="{{fromData.marketPrice}}" class="color4 item-ipt" placeholder="0.00" placeholder-class="colorA1"/>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="sell-secKill-header-from-item">
+                        <text class="color4 item-title">库存</text>
+                        <view class="ipt-box bgColorF6 borderF6 item-ipt-s">
+                            <input type="number" bindinput="changeNum" class="color4 value='{{fromData.totalQuantity}}'  item-ipt" placeholder="0" placeholder-class="colorA1"/>
+                            <text class="color4">件</text>
+                        </view>
+                    </view>
+                    <view class="sell-secKill-header-from-item">
+                        <text class="color4 item-title">秒杀时间</text>
+                        <view class="ipt-box item-ipt-l bgColorF6 borderF6" bindtap="showDateModule">
+                            <input value="{{killDate}}" disabled class="color4 item-ipt" placeholder="请选择时间段" placeholder-class="colorA1"/>
+                            <image class="item-img" src="/images/ic_arrow@3x.png"/>
+                        </view>
+                    </view>
+                    <view class="sell-secKill-header-from-item">
+                        <text class="color4 item-title">支付方式</text>
+                        <radio-group class="ipt-box" bindchange="radioChange">
+                            <label class="{{fromData.paymentType == 3? 'ipt-box-radio item-ipt-s colorA1 bgColorF6  ipt-box-radio-right active':'ipt-box-radio item-ipt-s colorA1 bgColorF6 borderF6 ipt-box-radio-right'}}">
+                                <radio class="ipt-radio" value="3"/>
+                                在线支付
+                            </label>
+                            <label class="{{fromData.paymentType == 8? 'ipt-box-radio item-ipt-s colorA1 bgColorF6  ipt-box-radio-right active':'ipt-box-radio item-ipt-s colorA1 bgColorF6 borderF6 ipt-box-radio-right'}}">
+                                <radio class="ipt-radio" value="8"/>
+                                到店支付
+                            </label>
+                        </radio-group>
+                    </view>
+                    <view class="sell-secKill-header-from-item">
+                        <text class="color4 item-title">店铺名称</text>
+                        <view class="item-ipt-l ipt-box bgColorF6 borderF6 color4">
+                            <input maxlength="30" value="{{fromData.storeName}}" bindinput="changeStoreName" class="color4 item-ipt" placeholder="请输入门店名称" placeholder-class="colorA1"/>
+                        </view>
+                        <view class="colorRed">*</view>
+                    </view>
+                    <view class="sell-secKill-header-from-item">
+                        <text class="color4 item-title">门店地址</text>
+                        <view class="ipt-box item-ipt-l bgColorF6 borderF6">
+                            <input disabled value="{{fromData.address}}" bindtap="changeAdr" class="color4 item-ipt item-ipt-adr" placeholder="请选择取货地址" placeholder-class="colorA1"/>
+                            <image class="item-img" src="/images/ic_arrow@3x.png"/>
+                        </view>
+                        <view class="colorRed">*</view>
+                    </view>
+                    <view class="sell-secKill-header-from-item-s" wx:if="{{!killStatus}}">
+                        <text class="color4 item-title">商品描述</text>
+                        <textarea bindinput="changeDesc" class="ipt-textarea item-ipt-l bgColorF6 borderF6 color4" placeholder="描述商品细节，可不填" placeholder-class="colorA1"/>
+                    </view>
+                </view>
+            </view>
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button class="sell-secKill-footer" formType="submit" bindtap="submitKill">发起秒杀</button>
+            </form>
+            <view class="ad_popError" wx:if="{{popErrorMsg}}">{{popErrorMsg}}</view>
+            <view class="date-module" wx:if="{{killStatus}}">
+                <view class="date-module-back" bindtap="closeDateModule"/>
+                <view class="date-module-box">
+                    <view class="date-module-btn-box">
+                        <view bindtap="closeDateModule" class="close">取消</view>
+                        <view bindtap="confirmDateModule" class="confirm">确定</view>
+                    </view>
+                    <picker-view class="date-module-main" indicator-style="height: 50px;" bindchange="bindChange">
+                        <picker-view-column class="date-module-main-item">
+                            <view wx:for="{{startH}}" wx:key="index" style="line-height: 50px">{{item}}</view>
+                        </picker-view-column>
+                        :
+                        <picker-view-column class="date-module-main-item">
+                            <view wx:for="{{startM}}" wx:key="index" style="line-height: 50px">{{item}}</view>
+                        </picker-view-column>
+                        到
+                        <picker-view-column class="date-module-main-item">
+                            <view wx:for="{{endH}}" wx:key="index" style="line-height: 50px">{{item}}</view>
+                        </picker-view-column>
+                        ：
+                        <picker-view-column class="date-module-main-item">
+                            <view wx:for="{{endM}}" wx:key="index" style="line-height: 50px">{{item}}</view>
+                        </picker-view-column>
+                    </picker-view>
+                </view>
+            </view>
+        </view>
+    </view>
