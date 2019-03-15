@@ -1,0 +1,59 @@
+<!--pages/index/applyInfo/applyInfo.wxml-->
+<form bindsubmit="joinLadybro" class="containerWrap">
+    <view class="contentBox">
+        <view class="titleHead colorGray ">个人资料</view>
+        <view class="innerBox">
+            <view class="inputList clearfix">
+                <view class="left label">姓 <b></b> <b></b> 名:</view>
+                <input type="text" placeholder="请输入姓名" class="{{inputFocus?'inputFocus left inputBox':'left inputBox '}}" placeholder-class="inputFocus" confirm-type="done" bindinput="nameInput" value="{{userName}}" bindfocus="inputFocus"/>
+            </view>
+            <view class="inputList clearfix">
+                <view class="left label">手机号码:</view>
+                <input type="text" placeholder="请输入手机号" class="{{inputFocus?'left inputBox  inputFocus':'left inputBox '}}" placeholder-class="inputFocus" confirm-type="done" bindinput="phoneInput" maxlength="11" value="{{phone}}" bindfocus="inputFocus"/>
+            </view>
+            <view class="inputList clearfix">
+                <view class="left label">收货地址:</view>
+                 <input type="text" placeholder="仅用于礼品寄送，请放心填写" class="{{inputFocus?'inputFocus left inputBox':'left inputBox '}}" placeholder-class="inputFocus" confirm-type="done" bindinput="cityInput" value="{{city}}" bindfocus="inputFocus"/>
+            </view>
+        </view>
+    </view>
+    <view class="contentBox baobao">
+        <view class="titleHead colorGray ">宝宝资料:</view>
+        <view class="innerBox ">
+            <view class="inputList clearfix pickerBox" style="border-top:none">
+                <view class="left label">宝宝生日:</view>
+                <picker mode="date" value="{{birthDay}}" start="1980-01-01" end="2045-01-01" bindchange="bindDateChange">
+                    <view class="{{enterBirth?'colorgray picker left':'picker left'}}">
+                        {{enterBirth?'请输入宝宝生日':birthDay}}
+                    </view>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view class="contentWrap" wx:if="{{showCheckGroup}}">
+        <view class="contentBox">
+            <view class="titleHead colorGray ">希望和栗妈交流的内容(多选)</view>
+            <view class="innerBox">
+                <checkbox-group bindchange="checkboxChange" class="inputList">
+                    <label class="checkbox" wx:for="{{exchangeTip}}" wx:key="{{index}}">
+                        <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+                        <view class="right">{{item.name}}</view>
+                    </label>
+                </checkbox-group>
+            </view>
+        </view>
+        <view class="contentBox ">
+            <view class="titleHead colorGray ">希望和栗妈交流的内容(多选)</view>
+            <view class="innerBox">
+                <checkbox-group bindchange="checkboxSecond" class="inputList">
+                    <label class="checkbox" wx:for="{{exchangeList}}" wx:key="{{index}}">
+                        <checkbox value="{{item.name}}" checked="{{item.checked}}" />
+                        <view class="right">{{item.name}}</view>
+                    </label>
+                </checkbox-group>
+            </view>
+        </view>
+    </view>
+    <button formType="submit" class="joinIn bgRed colorWhite textCenter" wx:if="{{showCheckGroup}}">立即加入闺蜜团</button>
+    <button formType="submit" class="joinIn bgRed colorWhite textCenter" wx:else>确定</button>
+</form>

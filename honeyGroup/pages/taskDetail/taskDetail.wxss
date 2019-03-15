@@ -1,0 +1,111 @@
+/* pages/taskDetail/taskDetail.wxss */
+page{
+	background: #F6F6F6;
+}
+.container{
+	padding-top:30rpx;
+}
+.taskWrap{
+	/*height: 824rpx;*/
+	margin:0rpx auto 40rpx;
+	padding:0;
+}
+.taskWrap .headBox{
+	height: 108rpx;
+	line-height: 108rpx;
+	background: linear-gradient(-180deg, #FFD1D1 0%, #FFA4A4 100%);
+border-radius: 20rpx 20rpx 0 0;
+padding:10rpx 30rpx 0 30rpx;
+box-sizing:border-box;
+
+}
+.taskWrap .urlText{
+	width: 630rpx;
+	height: 82rpx;
+	line-height: 82rpx;
+	overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+font-size: 30rpx;
+border-radius: 8px;
+margin-top:20rpx;
+padding:0 20rpx;
+box-sizing: border-box;
+}
+.taskWrap .headBox b{
+	font-size: 34rpx;
+}
+.taskWrap .headBox image{
+	width: 149rpx;
+	height: 88rpx;
+	margin-top:20rpx;
+
+}
+.titleTip{
+	font-size: 30rpx;
+	line-height: 45rpx;
+}
+.taskBox {
+	padding:30rpx;
+	box-sizing: border-box;
+}
+.taskBox .material{
+	width: 630rpx;
+	max-height:130rpx;
+	line-height: 44rpx;
+	overflow: hidden;
+	font-size: 30rpx;
+margin:20rpx 0 36rpx;
+
+}
+.taskBox .shareImg,.saveImgBox{
+	width: 180rpx;
+	height: 180rpx;
+	position: relative;
+	border-radius: 8rpx;
+}
+.saveImgBox .downLoadIcon{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 40rpx;
+	height: 40rpx;
+}
+.taskBox .saveImgWrap {
+	height: 200rpx;
+	margin-top:30rpx;
+
+}
+.taskBox .saveImgWrap .saveImgBox:nth-child(2){
+	margin:0 45rpx;
+}
+.taskBox .innerbtn{
+	width: 200rpx;
+	height: 54rpx;
+	line-height: 54rpx;
+	margin:20rpx auto;
+	border-radius: 100px;
+}
+.taskBox .innerbtn image{
+	width: 30rpx;
+	height: 30rpx;
+	vertical-align: middle;
+	margin-right: 10rpx;
+}
+.explain{
+height:auto;
+margin:0 auto 120rpx;
+overflow:hidden;
+}
+
+.explain .title{
+	line-height: 42rpx;
+}
+
+
+
+
+
+
+
+

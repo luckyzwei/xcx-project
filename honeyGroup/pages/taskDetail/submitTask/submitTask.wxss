@@ -1,0 +1,89 @@
+/* pages/submitTask/submitTask.wxss */
+page{
+	background: #F6F6F6;
+}
+.containerForm{
+	height:100%;
+width:100%;
+box-sizing:border-box;
+display:block;
+padding-top:30rpx;
+
+}
+.containerForm .taskWrap{
+height: 674rpx;
+margin:0rpx auto 40rpx;
+}
+.explain{
+/* height: 257rpx; */
+height: auto;
+margin:0 auto 120rpx;  
+}
+
+.imgBox{
+	height: 270rpx;
+	overflow: hidden;
+}
+.imgBox .title,.suggest .title{
+	line-height: 42rpx;
+margin:20rpx 0;
+}
+.hiddenImg{
+	display: none;
+}
+.imgWrap{
+	width: 180rpx;
+	height: 180rpx;
+	background: url(https://cloud.gemii.cc/lizcloud/fs/noauth/media/5a66e2d0acec4d001b6ff319)no-repeat;
+	background-size: 100%;
+	overflow: hidden;
+	margin-bottom:30rpx;
+
+}
+.upLoadImg .uploadIcon image{
+width: 52rpx;
+height: 52rpx;
+	margin:41rpx auto 10rpx;
+}
+.widthAuto{
+	width: auto;
+	max-width: 600rpx;
+}
+.imgBox .imgList image,.upLoadImg{
+	width: 180rpx;
+	height: 180rpx;
+border-radius: 8rpx;
+}
+.upLoadImg{
+
+border:3rpx dashed #ddd;
+}
+.imgBox .imgList{
+	position: relative;
+	width: 200rpx;
+	height: 200rpx;
+background: #fff;
+}
+.imgBox .imgList .delImg{
+	width: 30rpx;
+	height: 30rpx;
+	position: absolute;
+	top:0rpx;
+	right: 17rpx;
+	text-align: center;
+}
+.imgBox .imgList .delImg image{
+	width: 30rpx;
+	height: 30rpx;
+}
+.suggest .section textarea{
+	width: 610rpx;
+	margin:0 auto;
+	height: 260rpx;
+	padding:20rpx;
+border: 1px solid #a1a1a1;
+border-radius: 8px;
+color: #444;
+box-sizing:border-box;
+
+}

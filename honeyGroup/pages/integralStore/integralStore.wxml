@@ -1,0 +1,38 @@
+
+<view class="section" bindtap="showSelectBox">
+	<view class="picker textCenter">
+      <view class="optionHead">{{options}}<image class="iconSelect" src="/images/icon_sort.png"/></view>
+    </view>
+</view>
+<view class="maskBox" wx:if="{{showSelect}}">
+	<view class="bgWhite">
+		<button class="options colorGray textCenter" wx:for="{{sortList}}" wx:key="index" bindtap="selectOption" data-item="{{item}}" disabled='{{item.state}}'>
+			{{item.name}}
+		</button>
+	</view>
+</view>
+<scroll-view class="goodsBox " bindscrolltolower="loadMore" lower-threshold='1' scroll-y hidden="{{noData}}">
+	<view class="goods " wx:for="{{list}}" wx:key="{{index}}" bindtap="goToDetail" data-item="{{item}}">
+		<view class="innerBox bgWhite">
+			<view class="goodsPicBox"><image class="goodsPic " src="{{item.fileId}}"/></view>
+			<view class="goodsName">{{item.name}}</view>
+			<view class="liziBtn">
+				<view class="textCenter borderGray colorGray " wx:if="{{item.freeCount=='0'}}">
+					已兑完
+				</view>
+				<view class="bgRed colorWhite textCenter borderRed" wx:else>{{item.useIntegral}}栗子</view>
+			</view>
+		</view>
+	</view>
+	<view class="loadingBox" hidden="{{noData}}">
+        <view wx:if="{{hasRefesh}}" class='loadMore'>
+            <view class="loading"></view>
+        </view>
+        <view wx:else class='loadMore'>
+            <text> {{loadingMore?'上滑加载更多':'没有更多了'}}</text>
+        </view>
+    </view>
+</scroll-view>
+<!-- <view class="noData textCenter colorGray" wx:if="{{noData}}">
+    您目前还没有可兑换商品~
+</view> -->

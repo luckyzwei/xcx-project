@@ -1,0 +1,33 @@
+/* pages/rule/rule.wxss */
+page{
+	background: #F6F6F6;
+}
+.contentBox {
+	line-height: 80rpx;
+}
+.contentBox .titleHead{
+	height:42rpx;
+width:140rpx;
+line-height:42rpx;
+border-radius:100rpx;
+margin:30rpx 24rpx 0 24rpx;
+
+}
+.contentBox .innerBox{
+	background: #fff;
+	padding:0 30rpx;
+box-sizing: border-box;
+}
+.contentBox .innerBox .innerList:nth-child(2){
+	border-top: 1px solid #E8E8E8;
+}
+.containerWraps{
+	height:90%;
+width:90%;
+background:#fff;
+box-sizing:border-box;
+margin:30rpx auto;
+border-radius:20rpx;
+padding-top: 10rpx;
+box-sizing: border-box;
+}

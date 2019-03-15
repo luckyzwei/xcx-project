@@ -1,0 +1,284 @@
+/**index.wxss**/
+
+.userinfo {
+background: #FF6666;
+  position: relative;
+  width:100%;
+height:290rpx;
+
+}
+.userMainBox{
+  height:50%;
+width:100%;
+
+}
+.userWrap{
+    width:702rpx;
+height:504rpx;
+box-sizing: border-box;
+background: #FFFFFF;
+box-shadow: 0 3rpx 8rpx 0 rgba(68,68,68,0.10);
+border-radius: 20rpx;
+position: absolute;
+top:80rpx;
+left: 50%;
+margin-left: -351rpx;
+}
+.userinfo-avatar {
+  width: 140rpx;
+  height: 140rpx;
+  margin:-90rpx auto 0rpx;
+  border-radius: 50%;
+}
+.userInfo{
+   width: 140rpx;
+  margin: 20rpx auto;
+}
+ .userinfo-nickname{
+  font-family: PingFangSC-Medium;
+font-size: 30rpx;
+
+}
+.userWrap .inviteFriends{
+  width: 210rpx;
+  height: 50rpx;
+  border-radius: 100px;
+  margin:10rpx auto;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  padding-left:32rpx;
+box-sizing:border-box;
+border:none;
+}
+.userWrap .inviteFriends image{
+  width: 34rpx;
+  height: 34rpx;
+  vertical-align:sub;
+margin-right:5rpx;
+}
+.signWrap{
+width: 622rpx;
+  margin:50rpx auto 5rpx;
+box-sizing: border-box;
+padding-bottom: 10rpx;
+}
+.signWrap .signBox{
+display: inline-block;
+width: 50%;
+box-sizing: border-box;
+}
+.signBox .menuIcon{
+  height: 72rpx;
+  width: 72rpx;
+margin-left: 62rpx;
+}
+.signBox  .signInTime{
+line-height: 40rpx;
+font-size: 28rpx;
+text-align:left;
+margin-left: 17rpx;
+margin-right:0;
+padding:0;
+background:transparent;
+
+}
+.signBox  .signInTime .colorGray{
+  font-size: 24rpx;
+}
+
+.userinfo  .rule{
+line-height: 40rpx;
+font-size: 24rpx;
+position: absolute;
+top:38rpx;
+right:20rpx;
+text-decoration: underline;
+background:#fff;
+padding:0;
+
+}
+.liMenuBox{
+  width: 580rpx;
+  margin:20rpx auto;
+}
+.liMenuBox .innerBox{
+  width: 112rpx;
+  display: inline-block;
+
+}
+.liMenuBox .innerBox .menuIcon{
+  width: 68rpx;
+  height: 68rpx;
+  vertical-align: middle;
+  margin:0 auto;
+  display: block;
+}
+.liMenuBox .innerBox .navBox{
+  width: 112rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+}
+.liMenuBox .innerBox:nth-child(2){
+  margin:0 123rpx;
+}
+
+.swiperBox{
+  width:100%;
+  height: 50%;
+padding-top:20rpx;
+box-sizing:border-box;
+  overflow: hidden;
+  position: relative;
+}
+.swiperBox .headTitle{
+line-height: 62rpx;
+margin-bottom:20rpx;
+font-family: PingFangSC-Medium;
+font-size: 30rpx;
+}
+.swiperBox .slideWrap{
+ /*width:2560rpx;*/
+height:560rpx;
+overflow-x:auto;
+box-sizing:border-box;
+overflow-y:hidden;
+position: absolute;
+top: 78rpx;
+transition: all .5s;
+
+}
+.swiperBox  .slideBox{
+  width: 560rpx;
+  height: 440rpx;
+  background: #FFFFFF;
+box-shadow: 0 3rpx 12rpx 0 rgba(68,68,68,0.10);
+border-radius: 20rpx;
+    box-sizing: border-box;
+    margin:10rpx 0rpx;
+    padding:40rpx 24rpx;
+    position: relative;
+    display: block;
+  /*transform: scale(.9,.9);*/
+}
+
+
+.swiperBox  .slideBox .timeBox{
+  font-size: 22rpx;
+}
+
+.swiperBox  .slideBox .innerTitle{
+  width: 510rpx;
+height: 50rpx;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+font-size: 30rpx;
+line-height: 50rpx;
+font-family: PingFangSC-Medium;
+}
+
+.swiperBox  .slideBox .liziCount .liziIcon{
+  width: 28rpx;
+  height: 28rpx;
+  margin:8rpx 10rpx 0 0;
+}
+
+.swiperBox  .slideBox .liziCount {
+  font-size: 28rpx;
+  margin:6rpx 0 20rpx 0;
+  height: 42rpx;
+  line-height: 42rpx;
+
+}
+.swiperBox  .slideBox .tipBox{
+  height: 80rpx;
+  overflow: hidden;
+  font-size: 28rpx;
+  width: 504rpx;
+}
+.swiperBox  .slideBox .gouIcon{
+  width: 124rpx;
+  height: 124rpx;
+position: absolute;
+bottom: -60rpx;
+left: 40%;
+}
+.swiperBox  .slideBox .label .textCenter{
+  width: 102rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+border-radius: 100px;
+margin-bottom:15rpx;
+font-size:26rpx;
+
+}
+.swiperBox  .slideBox .canGet{
+  border: 1px solid #6AD298;
+color:#6AD298;
+}
+.swiperBox  .slideBox .ongoing{
+border: 1px solid #FF895D;
+color: #FF895D;
+}
+.maskBox .innerBox,.maskBox .signBox{
+  width: 470rpx;
+  height: 558rpx;
+  margin:388rpx auto 0;
+  background: #FFFFFF;
+border-radius: 20px;
+line-height: 43rpx;
+padding: 52rpx 49rpx ;
+box-sizing: border-box;
+}
+
+.maskBox .innerBox .welcome,.maskBox .innerBox .welcome image{
+  width: 256rpx;
+  height: 170rpx;
+}
+.maskBox .innerBox .welcome{
+  margin:0rpx auto 47rpx;
+}
+.maskBox .innerBox .bgRed{
+  width: 300rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin:62rpx auto 0;
+  border-radius: 100px;
+}
+.maskBox .signBox{
+ width: 260rpx;
+ height: 260rpx; 
+}
+.maskBox .signBox .welcome{
+  margin:0 auto 20rpx;
+
+}
+.maskBox .signBox image,.maskBox .signBox .welcome{
+  width: 154rpx;
+  height: 90rpx;
+}
+
+.swiperBox .noList{
+  width: 380rpx;
+  height: 300rpx;
+  margin:149rpx auto 0;
+  box-sizing: border-box;
+}
+.swiperBox .noList image{
+  width: 112rpx;
+  height: 132rpx;
+  margin:0 auto 30rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

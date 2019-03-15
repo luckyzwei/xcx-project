@@ -1,0 +1,324 @@
+/**app.wxss**/
+image{
+    height:auto
+}
+page {
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    height: 100%;
+    background: #FF6666;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background: #F6F6F6;
+    width: 100%;
+}
+
+.containerWrap {
+    height: 100%;
+    width: 100%;
+    background: #F6F6F6;
+    box-sizing: border-box;
+}
+
+.commonBox {
+    padding: 30rpx;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0 0rpx 8rpx 0 rgba(68, 68, 68, 0.10);
+    width: 690rpx;
+    border-radius: 20rpx;
+}
+
+.liziCount .liziIcon {
+    width: 28rpx;
+    height: 28rpx;
+    margin: 8rpx 10rpx 0 0;
+}
+
+.liziCount {
+    font-size: 28rpx;
+    margin: 6rpx 0 20rpx 0;
+    height: 42rpx;
+    line-height: 42rpx;
+}
+
+.explain .detail p {
+    line-height: 44rpx;
+    margin: 0;
+    color: #444;
+    display: block;
+}
+
+.getTaskBtn {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 30rpx;
+    position: fixed;
+    bottom: 0;
+    border-radius: 0;
+    left: 0;
+}
+
+.noData {
+    width: 80%;
+    margin: 150rpx auto;
+}
+
+
+/*公用样式集合*/
+input:focus::-webkit-input-placeholder {
+font-family: PingFangSC-Regular;  
+}
+input::-webkit-input-placeholder,input:focus,.inputFocus {
+font-family: PingFangSC-Regular!important;  
+}
+b {
+    font-family: PingFangSC-Medium;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.maskBox {
+    background: rgba(0, 0, 0, 0.45);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+}
+
+button::after {
+    border: none;
+    outline: none
+}
+button{
+    background: transparent;
+    font-size: 28rpx;
+}
+
+.colorBlack {
+    color: #444444;
+}
+
+.colorWhite {
+    color: #fff;
+}
+
+.colorRed {
+    color: #FF6666;
+}
+
+.borderGray {
+    border: 1px solid #999;
+}
+
+.borderRed {
+    border: 1px solid #FF6666;
+}
+
+.borderbottom {
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.colorGray {
+    color: #999;
+}
+
+.bgGray {
+    background: #C0C0C0;
+}
+.bgWhite{
+    background: #fff;
+}
+.bgRed {
+    background: #FF6666;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clearfix:after {
+    clear: both;
+    content: '.';
+    display: block;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.arrowIconRight{
+width:18rpx;
+height:18rpx;
+border-right:4rpx solid #b5bdc6;
+border-top:4rpx solid #b5bdc6;
+transform:rotate(45deg);
+display:block;
+margin-top:30rpx;
+border-radius:2rpx;
+
+}
+
+/*动画*/
+
+.loadingBox {
+    margin: 30rpx 0;
+}
+
+.loading {
+    background-color: #fff;
+    border-radius: 100%;
+    margin: 0 0 20rpx 0;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    border: 2px solid #f45c43;
+    border-bottom-color: transparent;
+    height: 40rpx;
+    width: 40rpx;
+    background: transparent !important;
+    display: inline-block;
+    -webkit-animation: rotate 0.75s 0s linear infinite;
+    animation: rotate 0.75s 0s linear infinite;
+}
+
+.loadMore {
+    margin: 16rpx 0 20rpx 0;
+    text-align: center;
+    font-size: 28rpx;
+    color: #A1A1A1;
+    line-height: 50rpx
+}
+
+@keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+/*动画2*/
+
+@-webkit-keyframes ball-spin-fade-loader {
+    50% {
+        opacity: 0.3;
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes ball-spin-fade-loader {
+    50% {
+        opacity: 0.3;
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.ball-spin-fade-loader {
+    position: relative;
+    width:45rpx;
+    height: 100rpx;
+    margin:0 auto;
+}
+
+.ball-spin-fade-loader>view:nth-child(1) {
+    top: 25px;
+    left: 0;
+    -webkit-animation: ball-spin-fade-loader 1s 0s infinite linear;
+    animation: ball-spin-fade-loader 1s 0s infinite linear;
+}
+
+.ball-spin-fade-loader>view:nth-child(2) {
+    top: 17.04545px;
+    left: 17.04545px;
+    -webkit-animation: ball-spin-fade-loader 1s 0.12s infinite linear;
+    animation: ball-spin-fade-loader 1s 0.12s infinite linear;
+}
+
+.ball-spin-fade-loader>view:nth-child(3) {
+    top: 0;
+    left: 25px;
+    -webkit-animation: ball-spin-fade-loader 1s 0.24s infinite linear;
+    animation: ball-spin-fade-loader 1s 0.24s infinite linear;
+}
+
+.ball-spin-fade-loader>view:nth-child(4) {
+    top: -17.04545px;
+    left: 17.04545px;
+    -webkit-animation: ball-spin-fade-loader 1s 0.36s infinite linear;
+    animation: ball-spin-fade-loader 1s 0.36s infinite linear;
+}
+
+.ball-spin-fade-loader>view:nth-child(5) {
+    top: -25px;
+    left: 0;
+    -webkit-animation: ball-spin-fade-loader 1s 0.48s infinite linear;
+    animation: ball-spin-fade-loader 1s 0.48s infinite linear;
+}
+
+.ball-spin-fade-loader>view:nth-child(6) {
+    top: -17.04545px;
+    left: -17.04545px;
+    -webkit-animation: ball-spin-fade-loader 1s 0.6s infinite linear;
+    animation: ball-spin-fade-loader 1s 0.6s infinite linear;
+}
+
+.ball-spin-fade-loader>view:nth-child(7) {
+    top: 0;
+    left: -25px;
+    -webkit-animation: ball-spin-fade-loader 1s 0.72s infinite linear;
+    animation: ball-spin-fade-loader 1s 0.72s infinite linear;
+}
+
+.ball-spin-fade-loader>view:nth-child(8) {
+    top: 17.04545px;
+    left: -17.04545px;
+    -webkit-animation: ball-spin-fade-loader 1s 0.84s infinite linear;
+    animation: ball-spin-fade-loader 1s 0.84s infinite linear;
+}
+
+.ball-spin-fade-loader>view {
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    margin: 2px;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    position: absolute;
+}
+

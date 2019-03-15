@@ -1,0 +1,36 @@
+<!--pages/userCenter/userCenter.wxml-->
+<wxs src='../../filter.wxs' module='Filter'></wxs>
+<view class="header">
+    <view class="headBox colorWhite clearfix">
+        <view class="left">
+            <b>{{Filter.Float(amount)}}</b> 个
+        </view>
+        <form bindsubmit="toChange" report-submit="true">
+            <button formType="submit" class="right">去兑换<em></em></button>
+        </form>
+    </view>
+    <view class="titleTip colorGray" hidden="{{noData}}">栗子账本</view>
+</view>
+<scroll-view class="historyBox" bindscrolltolower="loadMore" lower-threshold='1' scroll-y hidden="{{noData}}">
+    <view class="listBox" wx:for="{{list}}" wx:key="{{index}}" bindtap='exchangeLog' data-item='{{item}}'>
+        <view class="colorGray checkout" wx:if="{{item.sourceType==10}}">
+            查看详情<view class="arrowIconRight right"></view>
+        </view>
+        <view class="colorGray time">{{Filter.formatTime(item.createDate)}}</view>
+        <view class="clearfix inner">
+            <view class="colorBlack left listTitle">{{item.description}}</view>
+            <view class="{{item.balanceType=='1'?'number right colorRed':'number right green'}} ">{{item.balanceType=='1'?'+':'-'}}{{Filter.Float(item.changeAmount)}}</view>
+        </view>
+    </view>
+    <view class="loadingBox" hidden="{{noData}}">
+        <view wx:if="{{hasRefesh}}" class='loadMore'>
+            <view class="loading"></view>
+        </view>
+        <view wx:else class='loadMore'>
+            <text> {{loadingMore?'上滑加载更多':'没有更多了'}}</text>
+        </view>
+    </view>
+</scroll-view>
+<view class="noData textCenter colorGray" wx:if="{{noData}}">
+    您还未获得栗子~
+</view>

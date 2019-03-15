@@ -1,0 +1,103 @@
+/* pages/userCenter/userCenter.wxss */
+page{
+	background: #fff;
+	height: 100%;
+}
+.header{
+    height: 24%;
+  position: relative;
+  background: #F6F6F6;
+}
+.headBox{
+    background: url(https://cloud.gemii.cc/lizcloud/fs/noauth/media/5a6854971e6d8a0039740fe6)no-repeat;
+    background-size: 100%;
+    padding: 50rpx 30rpx;
+  /* height: 212rpx; */
+  height: 80%;
+    box-sizing: border-box;
+  width: 100%;
+  position: relative;
+}
+.headBox .left b{
+    font-size: 80rpx;
+  vertical-align:sub;
+}
+.headBox .right {
+line-height: 120rpx;
+position: relative;
+background:transparent;
+color:#fff;
+
+}
+.headBox .right em{
+    display: inline-block;
+    width:20rpx;
+height:20rpx;
+border-left:4rpx solid #fff;
+border-bottom:4rpx solid #fff;
+transform:rotate(225deg);
+
+}
+.titleTip{
+	line-height: 78rpx;
+	height: 78rpx;
+	position:absolute;
+bottom:0px;
+left:40rpx;
+
+}
+.historyBox{
+	background: #fff;
+	height: 76%;
+	overflow: auto;
+	width: 100%;
+}
+.historyBox,.historyBox .inner{
+	line-height: 40rpx;
+}
+.historyBox .listBox .time{
+	margin:10rpx 0;
+}
+
+.historyBox .listBox{
+	height: 160rpx;
+	box-sizing: border-box;
+	padding: 20rpx 0;
+	border-bottom: 2rpx solid #E8E8E8;
+	width:90%;
+margin:0 auto;
+position: relative;
+}
+.historyBox .listBox:last-child{
+	border:none;
+}
+.historyBox .listBox  .number{
+line-height: 50rpx;
+}
+.historyBox .listBox .green{
+	color: #6AD298;
+}
+.historyBox .listBox .listTitle{
+	overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+height: 40rpx;
+width: 440rpx;
+}
+.listBox .checkout{
+	position: absolute;
+	right: 10rpx;
+	top: 35rpx;
+}
+.listBox .checkout .arrowIconRight{
+margin-top: 10rpx;
+margin-left: 10rpx;
+}
+
+
+
+
+
+
+
+

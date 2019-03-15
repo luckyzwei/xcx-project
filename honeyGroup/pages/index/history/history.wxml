@@ -1,0 +1,27 @@
+<!--pages/index/history/history.wxml-->
+<wxs src='../../../filter.wxs' module='Filter'></wxs>
+
+	<scroll-view class="historyBox" bindscrolltolower="loadMore" lower-threshold='1' scroll-y hidden="{{noData}}" style="height: 100%">
+	<view class="listBox" wx:for="{{list}}" wx:key="{{index}}" >
+		<view class="colorGray time">{{Filter.formatTime(item.createDate)}}</view>
+		<view class="clearfix inner">
+			<view class="colorBlack left listTitle">{{item.name}}</view>
+			<view class="right textCenter status colorGray borderGray" wx:if="{{item.status=='1'}}">已过期</view>
+			<view class="right textCenter status colorRed borderRed" wx:if="{{item.status=='4'}}">已完成</view>
+			<view class="right textCenter status colorGray borderGray" wx:if="{{item.status=='0'}}">未完成</view>
+			<view class="right textCenter status colorGray borderGray" wx:if="{{item.status=='2'}}">待审核</view>
+			<view class="right textCenter status colorGray borderGray" wx:if="{{item.status=='5'}}">审核未通过</view>
+		</view>
+	</view>
+	<view class="loadingBox" hidden="{{noData}}">
+            <view wx:if="{{hasRefesh}}" class='loadMore'>
+                <view class="loading"></view>
+            </view>
+            <view wx:else class='loadMore'>
+                <text> {{loadingMore?'上滑加载更多':'没有更多了'}}</text>
+            </view>
+        </view>
+</scroll-view>
+<view class="noData textCenter colorGray" wx:if="{{noData}}">
+   您还没有完成过任务呦~
+</view>

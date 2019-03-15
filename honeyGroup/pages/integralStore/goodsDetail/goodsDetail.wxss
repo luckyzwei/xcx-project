@@ -1,0 +1,98 @@
+/* pages/integralStore/goodsDetail/goodsDetail.wxss */
+page{
+	background: #fff;
+}
+.goodsBox,.goodsBox .innerIme{
+	width: 100%;
+	height: 750rpx;
+  background: #e8e8e8;
+}
+.goodsInfo{
+	padding:0 30rpx;
+	background: #fff;
+	box-sizing: border-box;
+}
+.goodsInfo .title{
+height: 104rpx;
+line-height: 104rpx;
+font-size: 40rpx;
+width: 100%;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+}
+.receiveAddress{
+	overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+width:500rpx;
+height:60rpx;
+
+}
+.goodsInfo .innerInfo,.changeBtn .btn{
+	height: 88rpx;
+	line-height: 88rpx;
+}
+.detailBox{
+	border-top:20rpx solid #F6F6F6;
+	padding:0 30rpx;
+	margin-bottom: 150rpx;
+}
+
+.detailBox .detialImg image{
+	width: 100%;
+margin-bottom: 150rpx;
+display: block;
+}
+.detailBox .addressBox{
+	border-radius: 0;
+	height: 88rpx;
+	line-height: 88rpx;
+}
+
+.changeBtn{
+height: 128rpx;
+width: 100%;
+position: fixed;
+bottom: 0;
+left: 0;
+}
+ .changeBtn .btn{
+	width: 630rpx;
+margin:20rpx auto 10rpx;
+border-radius: 100px;
+
+}
+.innerInfo .left image{
+	width: 28rpx;
+	height: 28rpx;
+	vertical-align: middle;
+	margin-right: 10rpx;
+}
+.detailBox .headTitle{
+font-family: PingFangSC-Medium;
+height: 93rpx;
+line-height: 93rpx;
+}
+.describe .link view{
+color:#5D90C5;
+line-height: 60rpx;
+display: inline-block;
+}
+.detailBox .describe .tip,.description{
+	line-height: 40rpx;
+}
+.describe{
+	margin-bottom: 20rpx;
+}
+.detialImg{
+  margin-top:10rpx;
+}
+
+
+
+
+
+
+
+

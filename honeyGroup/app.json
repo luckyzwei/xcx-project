@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/rule/rule",
+    "pages/taskDetail/taskDetail",
+    "pages/taskDetail/submitTask/submitTask",
+    "pages/integralStore/integralStore",
+    "pages/userCenter/userCenter",
+    "pages/index/history/history",
+    "pages/index/applyInfo/applyInfo",
+    "pages/integralStore/goodsDetail/goodsDetail",
+    "pages/taskDetail/webview/webview"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF6666",
+    "navigationBarTitleText": "个人中心",
+    "navigationBarTextStyle": "white"
+  }
+}

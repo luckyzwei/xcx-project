@@ -1,0 +1,34 @@
+<!--pages/submitTask/submitTask.wxml-->
+<form class="containerForm" bindsubmit="bindFormSubmit" report-submit="true">
+    <view class="taskWrap commonBox">
+        <view class="imgBox clearfix">
+            <view class="title colorGray">任务截图： (最少1张，最多3张)</view>
+            <view class="{{showDel?'imgWrap left widthAuto':'imgWrap left hiddenImg'}}">
+                <view class="imgList left " wx:for="{{imgLists}}" wx:key="{{index}}">
+                    <view class="delImg" data-item="{{item}}" data-id='{{index}}' bindtap="delImg" wx:if="{{showDel}}">
+                        <image src="/images/icon_delete.png" alt="" />
+                    </view>
+                    <image src="{{item}}" alt="" />
+                </view>
+            </view>
+            <view bindtap='chooseImg' class="upLoadImg textCenter colorGray  left" hidden="{{uploadBtn}}">
+                <view class="uploadIcon">
+                    <image src="/images/icon_upload.png" alt="" />
+                </view>上传
+            </view>
+        </view>
+        <view class="suggest">
+            <view class="colorGray title">任务建议：</view>
+            <view class="section">
+                <textarea name="textarea" show-confirm-bar="true" placeholder="请写下您关于此次任务的心情体会" maxlength="300" bindinput="textInput" bindconfirm="confirmInput" placeholder-style="color:#a1a1a1"/>
+            </view>
+        </view>
+    </view>
+    <view class="explain commonBox">
+        <view class="colorGray title">提交说明：</view>
+        <view class="detail">
+            <p>{{detailTip}}</p>
+        </view>
+    </view>
+    <button form-type="submit" class="bgRed colorWhite getTaskBtn textCenter"> 提交 </button>
+</form>

@@ -1,0 +1,48 @@
+<!--pages/integralStore/goodsDetail/goodsDetail.wxml-->
+<scroll-view scroll-y='true' style="height:100%">
+    <view class="goodsBox">
+        <image src="{{url}}" class="innerIme" />
+    </view>
+    <view class="goodsInfo">
+        <view class="title borderbottom">
+            {{title}}
+        </view>
+        <view class="innerInfo">
+            <view class="left colorRed">
+                <image src="/images/Fill.png" />-{{liziAmount}}栗子
+            </view>
+            <view class="right colorGray" wx:if="{{!logistics}}">
+                已兑换：{{exchange==null?'0':exchange}} 库存：{{stock}}
+            </view>
+            <view class="right colorGray" wx:else>兑换成功</view>
+        </view>
+    </view>
+    <view class="detailBox">
+        <view class="addressBox borderbottom" bindtap="editAddress" wx:if="{{showAddress}}">
+            <view class="left" hidden="{{addressInfo}}">收货地址</view>
+            <view class="left receiveAddress" wx:if="{{addressInfo}}">{{userName}}：{{receiveAddress}}</view>
+            <view class="arrowIconRight right"></view>
+        </view>
+        <view class="colorBlack headTitle">详细描述</view>
+           <text class="description colorGray" wx:if="{{!virtualGoods}}">{{description}}</text>
+            <view class="detialImg" >
+            	<view class="describe" wx:if="{{virtualGoods}}">
+            		<view class="link colorGray" wx:if="{{showLink}}">兑换地址：<view bindtap='copyLink'>{{link}}</view ></view>
+            		<text class="tip colorGray">{{tips}}</text>
+            	</view>
+                <image src="{{detialImg}}" alt="" mode='widthFix' />
+            </view>
+    </view>
+   
+    <view class="bgWhite changeBtn" wx:if="{{logistics}}">
+        <view class="bgRed colorWhite btn textCenter" bindtap="logistics">{{checkCode?'查看兑换码':'查看物流'}}</view>
+    </view>
+    <view class="bgWhite changeBtn" wx:elif='{{virtualGoods}}'>
+        <view class="colorWhite textCenter bgRed btn" bindtap="exchangeCode">立即兑换</view>
+    </view>
+    <view class="bgWhite changeBtn" wx:else>
+        <view class="bgRed colorWhite btn textCenter" bindtap="exChange" wx:if="{{ifExchange == 'true'}}">立即兑换</view>
+        <view class="colorWhite textCenter bgGray btn" wx:else>已兑完</view>
+    </view>
+
+</scroll-view>

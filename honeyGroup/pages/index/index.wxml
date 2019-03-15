@@ -1,0 +1,105 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="userMainBox">
+        <view class="userinfo">
+            <view class="userWrap">
+                <view class="userInfo textCenter">
+                    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" wx:if="{{hasUserInfo}}"></image>
+                    <image class="userinfo-avatar" src="/images/logoLi.png" background-size="cover" wx:else></image>
+                </view>
+                <view class="userinfo-nickname colorBlack textCenter">{{userInfo.nickName}}</view>
+                <form bindsubmit="liziRule" report-submit="true">
+                    <button formType="submit" class="rule colorGray">规则说明</button>
+                </form>
+                <button class="inviteFriends bgRed" open-type="share">
+                    <image src="/images/icon_friend.png" alt="" /><span class="colorWhite">邀请好友</span>
+                </button>
+                <view class="signWrap clearfix borderbottom">
+                    <form class="signBox textCenter" bindsubmit="editUserInfo" report-submit="true">
+                        <image src="/images/icon_edit.png" alt="icon" class='menuIcon left' />
+                        <button class="signInTime colorRed left" formType="submit">
+                            个人资料
+                            <view class="colorGray">编辑个人资料</view>
+                        </button>
+                    </form>
+                    <form class="signBox textCenter" bindsubmit="signIn" report-submit="true">
+                        <image src="/images/icon_daysignin.png" alt="icon" class='menuIcon left' />
+                        <button class="signInTime colorRed left" formType="submit">
+                            立即签到
+                            <view class="colorGray">{{signTip?'已签到':'未签到'}}</view>
+                        </button>
+                    </form>
+                </view>
+                <view class="liMenuBox">
+                    <form class="innerBox textCenter " bindsubmit="formUserCenter" report-submit="true">
+                        <button class="navBox" formType="submit" style="background: #fff;padding:0;height: 100%;">
+                            <image src="/images/icon_mylizi.png" alt="icon" class='menuIcon ' /> 我的栗子
+                        </button>
+                    </form>
+                    <form class="innerBox textCenter " bindsubmit="formHistory" report-submit="true">
+                        <button class="navBox" formType="submit" style="background: #fff;padding:0;height: 100%;">
+                            <image src="/images/icon_task.png" alt="icon" class='menuIcon ' /> 历史任务
+                        </button>
+                    </form>
+                    <form class="innerBox textCenter " bindsubmit="liziChange" report-submit="true">
+                        <button class="navBox" formType="submit" style="background: #fff;padding:0;height: 100%;">
+                            <image src="/images/icon_fulishe.png" alt="icon" class='menuIcon ' /> 栗子兑换
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="swiperBox" wx:if="{{noList}}">
+        <view class="noList textCenter">
+            <image src="{{loadingData?'/images/icon_loding.png':'/images/sad.png'}}" alt="" />
+            <view class="colorBlack">{{loadingData?'加载中...':'还没有新任务哦，下次再领吧~'}}</view>
+        </view>
+    </view>
+    <view class="swiperBox" wx:else>
+        <view class="textCenter colorBlack headTitle">- 每周微任务 -</view>
+        <swiper current="0" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange"
+            bindanimationfinish="swiperFinish" class="slideWrap clearfix" style="width:100%" next-margin="85rpx" previous-margin="70rpx" display-multiple-items="1">
+            <block wx:for="{{swiperList}}" wx:key="{{index}}">
+                <swiper-item item-id="{{item.id}}" class="swiper-item" catchtap="toGetTask" data-id="{{item.id}}" data-title="{{item.name}}" data-active="{{item.isReceive}}"
+                    data-userid='{{item.userTaskId}}' data-operate="{{item.operateGuide}}" data-submitComment="{{item.submitComment}}">
+                    <view class="slideBox" style="margin:10rpx auto;">
+                        <view class="timeBox colorGray" wx:if="{{showSwiper}}">{{item.startTime}} 至 {{item.endTime}}</view>
+                        <view class="colorRed innerTitle">{{item.name}}</view>
+                        <view class="liziCount" wx:if="{{showSwiper}}">
+                            <image src="/images/Fill.png" alt="" class="liziIcon left" />
+                            <view class="number colorRed left">+{{item.mgRewardReq.name}}</view>
+                        </view>
+                        <view class="tipBox colorGray">
+                            {{item.description}}
+                        </view>
+                        <image src="/images/icon_normal.png" alt="" class="gouIcon" wx:if="{{item.type=='2'}}" data-userid='{{item.userTaskId}}' data-operate="{{item.operateGuide}}"
+                            data-id="{{item.id}}" data-active="{{item.isReceive}}" data-submitComment="{{item.submitComment}}" catchtap="toGetTask" />
+
+                        <image src="/images/icon_normal.png" alt="" class="gouIcon" wx:elif="{{item.isReceive=='1'}}" data-item="{{item.name}}" data-userid='{{item.userTaskId}}'
+                            data-submitComment="{{item.submitComment}}" data-type="{{item.type}}" catchtap="toSubmitTask" />
+                        <image src="/images/icon_ok.png" alt="" class="gouIcon" wx:else />
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class="maskBox" wx:if="{{!hasUserInfo && canIUse}}">
+        <view class="innerBox">
+            <view class="welcome textCenter">
+                <image src="/images/pic_frist.png" alt="" />
+            </view>
+            <view class="textCenter welcomeTip colorBlack">加入栗妈闺蜜团，领取微任务，惊喜福栗等您拿！</view>
+            <button class="bgRed colorWhite textCenter" open-type="getUserInfo" bindgetuserinfo="getUserInfo">申请加入</button>
+        </view>
+    </view>
+    <view class="maskBox" wx:if="{{signed}}">
+        <view class=" signBox">
+            <view class="welcome textCenter">
+                <image src="/images/pic_biglizi.png" alt="" />
+            </view>
+            <view class="textCenter welcomeTip colorRed">今日+5栗子</view>
+        </view>
+    </view>
+</view>

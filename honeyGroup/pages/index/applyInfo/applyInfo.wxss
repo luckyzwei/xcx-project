@@ -1,0 +1,91 @@
+/* pages/index/applyInfo/applyInfo.wxss */
+page{
+	background: #F6F6F6;
+}
+.contentBox {
+	line-height: 80rpx;
+}
+.contentBox .titleHead{
+	height: 80rpx;
+	padding-left: 30rpx;
+}
+.contentBox .innerBox{
+	background: #fff;
+}
+.contentBox .innerBox .inputList{
+	margin:0 30rpx;
+	box-sizing: border-box;
+}
+.contentBox .innerBox .inputList+ .inputList,
+.contentBox  .innerBox .pickerBox{
+	border-top: 1px solid #E8E8E8;
+}
+.contentBox .innerBox .inputList .left{
+	line-height: 80rpx;
+	height: 80rpx;
+	color: #444;
+}
+.contentBox .innerBox .inputList .label{
+	width: 120rpx;
+}
+.contentBox .innerBox .inputList .label b{
+width: 15rpx;
+height: 10rpx;
+display: inline-block;
+background: #fff;
+}
+.baobao .inputList .label{
+	width: 140rpx!important;
+}
+.contentBox .innerBox .inputList .inputBox,
+.contentBox .innerBox .inputList .picker{
+	border:none;
+	outline: none;
+  width: 78%;
+  padding-left:4rpx;
+box-sizing:border-box;
+font-family: PingFangSC-Regular!important;
+}
+.contentBox .innerBox .inputList .inputBox::-webkit-input-placeholder{
+font-family: PingFangSC-Regular;  
+}
+
+.colorgray,input-placeholder,.input-placeholder{
+	color: #A1A1A1!important;
+font-family: PingFangSC-Regular;  
+  
+}
+
+.joinIn{
+	border-radius: 100px;
+	width: 690rpx;
+	height: 88rpx;
+	line-height: 88rpx;
+	margin:40rpx auto;
+}
+.inputList .checkbox{
+	display: block;
+}
+.inputList .checkbox+ .checkbox{
+	border-top: 2rpx solid #E8E8E8
+
+}
+.inputList checkbox .wx-checkbox-input {
+    margin-right: 5px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0;
+    border: 1px solid #D1D1D1;
+    background-color: #FFFFFF;
+    border-radius: 100%;
+    width: 44rpx;
+    height: 44rpx;
+    transform: scale(.7, .7);
+    position: relative;
+}
+
+.inputList checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    color: #FF6666 !important;
+    background: #FF6666;
+    border-color: #FF6666 !important;
+}

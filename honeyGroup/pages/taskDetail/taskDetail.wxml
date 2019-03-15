@@ -1,0 +1,72 @@
+<!--pages/taskDetail/fetchTask/fetchTask.wxml-->
+<form class="container" bindsubmit="bindFormSubmit" report-submit="true">
+    <view class="commonBox taskWrap">
+        <view class="headBox colorWhite">
+            <b wx:if="{{ifShareText}}">文字任务</b>
+            <b wx:if="{{shareImg}}">图文任务</b>
+            <b wx:if="{{ifUrlText}}">链接任务</b>
+            <b wx:if="{{question}}">问卷任务</b>
+            <image src="/images/why.png" alt="" class="right" wx:if="{{question}}" style="height: 96rpx;margin-top:10rpx"/>
+            <image src="/images/icon_wenzi.png" alt="" class="right" wx:if="{{ifShareText}}"/>
+            <image src="/images/links.png" alt="" class="right" wx:if="{{ifUrlText}}"/>
+            <image src="/images/pic.png" alt="" class="right" wx:if="{{shareImg}}"/>
+        </view>
+        <view class="taskBox">
+            <view class="colorGray titleTip">任务名称：</view>
+            <view class="colorBlack  material">{{taskName}}</view>
+            <!-- 文字素材： -->
+            <view class="textBox" wx:if="{{!shareImg}}">
+                <view wx:if="{{!question}}" hidden="{{shareText==''}}">
+                    <view class="colorGray titleTip">文字素材：</view>
+                   <view class="colorBlack  material">{{shareText}}</view>
+                   <view class="colorRed textCenter innerbtn borderRed" bindtap='copyText' hidden="{{ifUrlText}}">
+                    <image src="/images/icon_copy.png" alt="" />复制文字
+                   </view>
+                </view>
+            </view>
+            <!-- 图文素材： -->
+            <view class="textBox" wx:if="{{shareImg}}">
+                <view class="colorGray titleTip">图文素材：</view>
+                <view class="colorBlack  material">{{shareText}}</view>
+                <view class="colorRed textCenter innerbtn borderRed" bindtap='copyText'>
+                    <image src="/images/icon_copy.png" alt="" />复制文字</view>
+                <view class="saveImgWrap">
+                    <view class="saveImgBox left" wx:for="{{imgUrl}}" wx:key="index">
+                        <image src="{{item}}" alt="" class="shareImg" data-src="{{item}}" data-id="{{index}}" data-list="{{imgUrl}}" catchtap="previewImg" />
+                        <image src="/images/icon_save.png" data-id='{{index}}' data-item="{{item}}" class="downLoadIcon" bindtap='saveImg' />
+                    </view>
+                </view>
+            </view>
+            
+            <!-- 打开链接 -->
+            <view class="textBox" wx:if="{{ifUrlText}}">
+                <view class="colorGray titleTip">分享链接：</view>
+                <view class="borderGray colorBlack urlText">{{urlText}}</view>
+                <view class="colorRed textCenter innerbtn borderRed" bindtap="copyUrl">
+                    <image src="/images/icon_openlink.png" alt="" /> 复制素材
+                </view>
+            </view>
+            <view class="colorGray titleTip">任务奖励：</view>
+            <view class="liziCount">
+                <image src="/images/Fill.png" alt="" class="liziIcon left" />
+                <view class="number colorRed left" wx:if="{{awardsOne}}">+{{quantity}}栗子</view>
+                <view class="number colorRed left" wx:elif="{{awardstwo}}">+{{changeCode}}</view>
+                <view class="number colorRed left" wx:else>+{{awards}}</view>
+            </view>
+            <view class="colorGray titleTip">任务时间：</view>
+            <view class="colorBlack">{{startTime}} 至 {{endTime}}</view>
+        </view>
+    </view>
+    <view class="explain commonBox">
+        <view class="colorGray title">操作指南：</view>
+        <view class="detail">
+            <p>{{detailTip}}</p>
+        </view>
+    </view>
+    <form  bindsubmit="toGetTask" report-submit="true"  wx:if="{{!haveGetTask}}">     
+        <button form-type="submit" class="bgRed colorWhite getTaskBtn textCenter">领取任务</button>
+    </form>
+    <view class="bgRed colorWhite getTaskBtn textCenter " bindtap="toSubmitTask" wx:else>
+        {{question?'去答题':'提交任务'}}
+    </view>
+</form>

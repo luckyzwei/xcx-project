@@ -1,0 +1,39 @@
+<!--pages/rule/rule.wxml-->
+<view class="containerWraps">
+  <view class="contentBox">
+    <view class="titleHead colorRed borderRed textCenter">新手任务</view>
+    <view class="innerBox">
+        <view class="innerList colorBlack">
+            首次加入栗妈闺蜜团「可获20栗子」 <span class="colorGray"></span>
+            <!-- <view class="colorRed right">+{{'20'}}</view> -->
+        </view>
+        <view class="innerList colorBlack">完善个人资料「可获20栗子」
+            <!-- <view class="colorRed right">+{{'20'}}</view> -->
+        </view>
+    </view>
+</view>
+<view class="contentBox">
+    <view class="titleHead colorRed borderRed textCenter">日常任务</view>
+    <view class="innerBox">
+        <view class="innerList colorBlack">
+            每日签到「可获5栗子」 <span class="colorGray">若连续签到有机会赢大奖</span>
+            <!-- <view class="colorRed right">+{{'5'}}</view> -->
+        </view>
+        <view class="innerList colorBlack">
+            邀请好友加入闺蜜团「可获20栗子」
+            <!-- <view class="colorRed right">+{{'20'}}</view> -->
+        </view>
+    </view>
+</view>
+<view class="contentBox">
+    <view class="titleHead colorRed borderRed textCenter" style="width: 168rpx">每周微任务</view>
+    <view class="innerBox">
+        <view class="innerList colorBlack">问卷调研「可获20栗子」
+            <!-- <view class="colorRed right">+{{'20'}}</view> -->
+        </view>
+        <view class="innerList colorBlack">分享转发「可获10栗子」
+            <!-- <view class="colorRed right">+{{'10'}}</view> -->
+        </view>
+    </view>
+</view>  
+</view>
