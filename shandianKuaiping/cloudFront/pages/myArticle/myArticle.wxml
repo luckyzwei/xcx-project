@@ -1,0 +1,35 @@
+<view class='root'>
+  <view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></image>
+    <view class='title'>我的帖子</view>
+  </view>
+
+  <scroll-view style='height: calc(100vh - {{navigationHeight}});' scroll-y  bindscrolltolower="{{loadMoreData? 'refreshFooter': ''}}" enable-back-to-top="true" scroll-with-animation="true">
+
+    <block wx:for='{{dataList}}'>
+      <view class='item' data-item='{{item}}' bindtap='clickAction'>
+        <view class='user'>
+        <image src='{{item.userlogo}}'></image>
+        <view class='name'>{{item.username}}</view>
+        <view class='date'>{{item.createDate}}</view>
+        <view class='report' catchtap='reportAction' hover-stop-propagation='true' data-item='{{item}}'>
+          <image src='../../images/icon/ic_report.png'></image>
+        </view>
+      </view>
+
+        <view class='title'>{{item.title}}</view>
+        <view class='total'> 
+          <image class='pageViewImage' src='../../images/icon/ic_eye.png'></image>
+          <view class='pageViewCount'>{{item.browseNum}}</view>
+          <image class='recommandImage' src='../../images/icon/ic_comment.png'></image>
+          <view class='recommandCount'>{{item.commentNum}}</view>
+        </view>
+      </view>
+      <view class='gap' wx:if='{{index != dataList.length - 1}}'></view>
+    </block>
+<view class='footerRefresh {{dataList.length == 0 ? "hide" : "show_flex"}}'>
+      <view>{{loadMoreData?"正在努力加载...":"已经到底啦"}}</view>
+      <image class='{{loadMoreData ? "show" : "hide"}}' src='../../images/icon/refresh.png'></image>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,51 @@
+<view class='root'>
+  <cover-view class='shadow_view' bindtap='touchShadow' wx:if='{{showShadow}}'>
+    <cover-view class='sheet'>
+      <cover-view bindtap='addImageAction'>
+        <cover-image class='coverImage' src='../../images/icon/ic_pic_upload.png'></cover-image>
+        <cover-view class='coverView'>上传图片</cover-view>
+      </cover-view>
+      <cover-view bindtap='jointAction'>
+        <cover-image class='coverImage' src='../../images/icon/ic_pic_pinjie.png'></cover-image>
+        <cover-view class='coverView'>拼接长图</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+  <view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></image>
+    <view class='title'>发布帖子</view>
+  </view>
+
+  <view class='scroll-view' style='height: calc(100vh - 190rpx - {{navigationHeight}});'>
+    <textarea class='title' placeholder='好的标题是神帖的一半~(最多30字)' placeholder-style='color:#b2b2b2;font-family: PingFangSC-Medium;' maxlength='30' show-confirm-bar='' adjust-position='' bindinput='titleInputAction' disabled='{{showAlert}}' value='{{title}}' catchtouchmove='moveAction'></textarea>
+    <view class='line'></view>
+    <textarea class='info' placeholder='这里全由你发挥~(最多2000字)'  placeholder-style='color:#b2b2b2;' maxlength='2000' adjust-position='' bindinput='contentInputAction' disabled='{{showAlert}}' value='{{content}}'></textarea>
+    <view class='image_background'>
+      <block wx:for='{{imageList}}'>
+        <view class='image' wx:if='{{index < imageCount}}'>
+          <image class='delete' src='../../images/icon/ic_edit_delete.png' bindtap='{{changeEnable?"deleteAction":""}}' data-index='{{index}}' data-item='{{item}}'></image>
+          <view class='shadow' bindtap='shadowAction' data-index='{{index}}' data-item='{{item}}' wx:if='{{item.selected}}'></view>
+          <view class='stick' bindtap='stickAction' data-index='{{index}}' data-item='{{item}}' wx:if='{{item.selected}}'>置顶</view>
+          <image class='photo' src='{{item.url}}' mode='aspectFill'  bindtap='{{item.selected ? "" : "showAction"}}' data-index='{{index}}' data-item='{{item}}'></image>
+        </view>
+        <view class='add_pic' wx:if='{{index == imageCount}}' bindtap='{{changeEnable?"chooseAction":""}}'>
+          <image src='../../images/icon/ic_edit_addpic.png'></image>
+        </view>
+        <view wx:if='{{index > imageCount}}'>
+        </view>
+      </block>
+    </view>
+    <view class='gap'></view>
+  </view>  
+
+  <view class='bottom'>
+
+  <image class='anony' src='{{anony?"../../images/icon/niming_on.png":"../../images/icon/niming_off.png"}}' bindtap='anonyAction'></image>
+  
+    <view class='cancel' bindtap='cancelAction'>清空</view>
+    <view class='submit' bindtap='{{stopPublish?"":"publishAction"}}'>
+      <image src='../../images/icon/ic_edit_send.png'></image>
+    发布</view>
+  </view>
+  
+</view>

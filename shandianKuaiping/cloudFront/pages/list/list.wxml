@@ -1,0 +1,99 @@
+<view class='sign' wx:if='{{!hasUserInfo}}'>
+  <view class='shadow' style='height:calc(100vh - {{navigationHeight}});top:{{navigationHeight}}'>
+    <view class='background'>
+      <image src='../../images/icon/logo.png'></image>
+      <button class='canIUse-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfoAll">一起加入讨论</button>
+    </view>
+  </view>
+  <view class='navigation_bar' style='height:{{navigationHeight}};'>
+    <view class='title'>闪电快评</view>
+  </view>
+  <image src='../../images/icon/list_bg.png' style='height:calc(100vh - {{navigationHeight}});' mode='widthFix'></image>
+  
+  
+</view>
+<view class='root' wx:else>
+<view class='cover_view {{showEmpty==""?"hide":"show"}}'>抱歉，您访问的页面不存在，请稍后重试</view>
+  <view class='navigation_bar' style='height:{{navigationHeight}};'  bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <view class='title'>闪电快评</view>
+  </view>
+  <view class='search_bar' style='margin-top:{{navigationHeight}};'>
+    <view class='{{searchKey == ""? "search_action" : "search_action_highlight"}}' bindtap='searchAction'>
+      <image class='{{searchKey == ""? "search_image" : "search_image_highlight"}}' src='../../images/icon/search.png'></image>
+      <view class='{{searchKey == ""? "search_view" : "search_view_highlight"}}'>{{searchKey==""?"找找你想看的":searchKey}}</view>
+    </view>
+    <view class='cancel {{searchKey == "" ? "hide" : "show"}}' bindtap='cancelAction'>取消</view>
+  </view>
+  
+  <image class='publish' src='../../images/icon/ic_home_publish.png' bindtap='publishAction'></image>
+  <image class='tips {{showTips?"show":"hide"}}' src='../../images/icon/home_tips.png'></image>
+  <view class='banner' style='margin-top:calc(86rpx + {{navigationHeight}});'>
+    <block wx:for='{{articleTypeList}}'>
+      <view class='item' bindtap='changeType' data-info='{{item}}'>
+        <view class='info {{currentType==index? "red" : "black"}}'>{{item.typeName}}</view>
+        <view class='stamp {{currentType==index? "show" : "hide"}}'></view>
+      </view>
+      
+    </block>
+    <view class='gap'></view>
+  </view>
+  <view class='scroll-view'>
+    <view class='util'style='height: calc(86rpx + 90rpx + {{navigationHeight}})' >
+      <image src='../../images/icon/refresh_gif.gif'></image>
+    </view>
+    <block wx:for="{{articleList}}">
+      <view class='item' bindtap='clickAction' data-info='{{item}}'>
+        <!-- <view class='bottom'>
+          <view class='users_icon'>
+            <block wx:for='{{item.logoPathList}}' wx:for-item="itemDetail" wx:for-index="index">
+              <image src='{{itemDetail}}' wx:if='{{index < 4}}'></image>
+              <image src='../../images/icon/ic_home_more.png' wx:if='{{index == 4}}'></image>
+            </block>
+          </view>
+          <view class='group_count'>{{item.group_count}}</view>
+          <view class='detail'>群正在讨论…</view>
+        </view> -->
+        <view class='user'>
+          <image src='{{item.author.logoPath}}'></image>
+          <view class='info'>
+            <view class='username'>{{item.author.nickName}}</view>
+            <view class='date'>{{item.createDate}}</view>
+          </view>
+        </view>
+        <view class='title'>{{item.title}}</view>
+        <view class='image {{item.imageList.length == 0?"hide" : "show_flex"}}'>
+          <view class='vs {{item.voteImage == "" ? "hide" : "show"}}'>
+            <!-- <image src='../../images/icon/pic_vs.png'></image> -->
+          </view>
+          <block wx:for='{{item.imageList}}'  wx:for-index='subindex' wx:for-item='subitem'>
+            <image class='{{item.imageList.length == 1 ? "single" : "multiple"}}' src='{{subitem}}' mode='aspectFill'></image>
+          </block>
+        </view>
+        <view class='comment {{item.hasComment ? "show" : "hide"}}'>
+        <block wx:for='{{item.comments}}' wx:for-index='subindex' wx:for-item='subitem'>
+          <image class='icon' src='../../images/icon/ic_home_tag.png' wx:if='{{subindex == 0}}'></image>
+          <view class='subitem' wx:if='{{subindex == 0}}'>
+            <view class='fromuser'>{{subitem.fromUser.nickName}}:</view>
+            <view class='info'>{{subitem.fromUser.nickName}}: {{subitem.content}}</view>
+          </view>
+        </block>
+        </view>
+        <view class='comment_shadow {{item.hasComment ? "hide" : "show"}}'>
+          <view>还没有人评论，快来抢沙发~</view>
+        </view>
+        <view class='total'> 
+          <image class='pageViewImage' src='../../images/icon/ic_eye.png'></image>
+          <view class='pageViewCount'>{{item.browseNum}}</view>
+          <image class='recommandImage' src='../../images/icon/ic_comment.png'></image>
+          <view class='recommandCount'>{{item.commentNum}}</view>
+        </view>
+      </view>
+      <view class='item_gap' wx:if='{{index != articleList.length - 1}}'></view>
+    </block>
+    <view class='gap'></view>
+    <view class='footerRefresh {{articleList.length == 0 || searchKey != "" ? "hide" : "show_flex"}}'>
+      <view>{{loadMoreData?"正在努力加载...":"已经到底啦"}}</view>
+      <image class='{{loadMoreData ? "show" : "hide"}}' src='../../images/icon/refresh.png'></image>
+    </view>
+  </view>
+</view>

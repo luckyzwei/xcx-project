@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/article/article",
+    "pages/list/list",
+    "pages/main/main",
+    "pages/search/search",
+    "pages/mine/mine",
+    "pages/publish/publish",
+    "pages/myArticle/myArticle",
+    "pages/myThumb/myThumb",
+    "pages/myNotification/myNotification",
+    "pages/myHistory/myHistory",
+    "pages/report/report",
+    "pages/imageManager/imageManager",
+    "pages/shareMoments/shareMoments",
+    "pages/comment/comment"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FED93B",
+    "navigationBarTitleText": "闪电快评",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/icon/ic_tab_home_hl.png",
+        "iconPath": "images/icon/ic_tab_home.png",
+        "pagePath": "pages/article/article",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/icon/ic_tab_me_hl.png",
+        "iconPath": "images/icon/ic_tab_me.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  }
+}

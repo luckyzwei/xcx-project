@@ -1,0 +1,21 @@
+<view class='root' catchtouchmove="{{enableChange?'':'preventTouchMove'}}">
+  <cover-view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <cover-image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></cover-image>
+    <cover-view class='title'>编辑图片</cover-view>
+  </cover-view>
+  <view class='test' style='padding-top:{{navigationHeight}};'>
+    <canvas style='height:{{height}}px;' class='main_canvas' canvas-id="canvas" bindtouchstart='startAction' bindtouchmove='moveAction'></canvas>
+    <!-- <canvas style='height:{{height}}px;' class='main_canvas' canvas-id="canvas"></canvas> -->
+
+  </view>
+
+  <cover-view class='bottom'>
+    <cover-view class='mosaic' bindtap='changeAction'>
+      <cover-image class='icon' src='{{enableChange?"../../images/icon/ic_mosaic.png":"../../images/icon/ic_mosaic_hl.png"}}'></cover-image>
+      <cover-view class='desc'>马赛克</cover-view>
+    </cover-view>
+
+    <cover-view class='submit' bindtap='submitAction'>上传图片</cover-view>
+  </cover-view>
+  
+</view>

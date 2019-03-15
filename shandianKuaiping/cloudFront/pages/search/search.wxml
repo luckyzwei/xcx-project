@@ -1,0 +1,20 @@
+<view class='root'>
+  <view class='navigation_bar' style='height:{{navigationHeight}};'>
+    <image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></image>
+    <view class='title'>闪电快评</view>
+  </view>
+  <view class='search_bar'>
+    <view class='search_action' bindtap='searchAction'>
+      <image src='../../images/icon/search.png'></image>
+      <input placeholder-class='holder' placeholder='找找你想看的' confirm-type='search' bindconfirm="searchAction"></input>
+    </view>
+    <view class='cancel' bindtap='cancelAction'>取消</view>
+  </view>
+  <scroll-view scroll-y style='height: calc(100vh - 86rpx - {{navigationHeight}});'>
+      <view class='title'>热门搜索</view>
+      <block wx:for='{{hotList}}'>
+        <view class='key' bindtap='keyAction' data-title='{{item.title}}'><view class='{{index > 2 ? "orange" : "red"}}'>{{(index + 1)}}</view>{{item.title}}</view>
+        <view class='line'></view>
+      </block>
+    </scroll-view>
+</view>

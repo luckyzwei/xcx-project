@@ -1,0 +1,17 @@
+<view class='root'>
+  <cover-view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <cover-image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></cover-image>
+    <cover-view class='title'>闪电快评</cover-view>
+  </cover-view>
+
+  <canvas canvas-id='canvas' style='height:{{canvasHeight}}rpx;padding-bottom:180rpx;'>
+
+  </canvas>
+
+  <cover-view class='bottom'>
+    <cover-view class='share' bindtap='saveAction'>
+      <cover-image src='../../images/icon/ic_downloadpic.png'></cover-image>
+      <cover-view>生成海报分享</cover-view>
+    </cover-view>
+  </cover-view>
+</view>

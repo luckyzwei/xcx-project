@@ -1,0 +1,89 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wx138cc46bd172c9de",
+	"projectname": "cloudFront",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 7,
+			"list": [
+				{
+					"id": -1,
+					"name": "main",
+					"pathName": "pages/main/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "publish",
+					"pathName": "pages/publish/publish",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "mine",
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "report",
+					"pathName": "pages/report/report",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "imageManager",
+					"pathName": "pages/imageManager/imageManager",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "comment",
+					"pathName": "pages/comment/comment",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "shareMoments",
+					"pathName": "pages/shareMoments/shareMoments",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "article",
+					"pathName": "pages/article/article",
+					"query": ""
+				}
+			]
+		}
+	}
+}

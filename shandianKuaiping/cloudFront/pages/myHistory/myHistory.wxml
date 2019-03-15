@@ -1,0 +1,10 @@
+<view class='root'>
+  <view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></image>
+    <view class='title'>发布帖子</view>
+  </view>
+
+  <scroll-view style='height: calc(100vh - {{navigationHeight}});' scroll-y>
+  
+  </scroll-view>
+</view>

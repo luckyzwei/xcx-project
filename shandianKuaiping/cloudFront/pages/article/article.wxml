@@ -1,0 +1,70 @@
+<view class='sign' wx:if='{{!hasUserInfo}}'>
+  <view class='shadow' style='height:calc(100vh - {{navigationHeight}});top:{{navigationHeight}}'>
+    <view class='background'>
+      <image src='../../images/icon/logo.png'></image>
+      <button class='canIUse-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfoAll">一起加入讨论</button>
+    </view>
+  </view>
+  <view class='navigation_bar' style='height:{{navigationHeight}};'>
+    <view class='title'>闪电快评</view>
+  </view> 
+<image src='../../images/icon/bg.png' style='height:calc(100vh - {{navigationHeight}});' mode='widthFix'></image>
+  
+  
+</view>
+<view wx:else class='root'>
+  <view class='cover_view {{showAnony==""?"hide":"show"}}'>已开启匿名</view>
+  <view class='shadowview {{editing||showGuide?"show":"hide"}}' bindtap='touchShadow'></view>
+  <view class='guide_view {{showGuide?"show_message":"hide"}}'>
+    <image class='close' src='../../images/icon/ic_close.png' bindtap='closeGuideAction'></image>
+    <view class='middle'>
+      <view class='line'></view>
+      <view class='info'>分享到</view>
+      <view class='line'></view>
+    </view>
+    <view class='bottom'>
+    <button open-type='share' data-from='bottom'></button>
+      <view>
+        <image src='../../images/icon/ic_share_wechat.png'></image>
+        <view>微信好友</view>
+      </view>
+      <view bindtap='shareMomentsAction'>
+        <image src='../../images/icon/ic_share_moments.png'></image>
+        <view>朋友圈</view>
+      </view>
+    </view>
+  </view>
+  <view class='navigation_bar' style='height:{{navigationHeight}};'  bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    
+    <view class='title'>闪电快评</view>
+  </view>
+  <view class='media {{video ?"show":"hide"}}' style='height:{{videoHeight}}'>
+      <video src="{{video}}" style='height:{{videoHeight}}'></video>
+  </view>
+  
+  <view class='wall'></view>
+  <view class='shadow_wall'>
+    <view class='left'>
+      <view class='title'>{{articleInfoResult.title}}</view>
+      <view class='date'>{{author.createDate}}</view>
+    </view>
+    <view class='next' bindtap='nextAction'>下一个
+      <image src='../../images/icon/ic_next.png'></image>
+    </view>
+  </view>
+  <image class='share_back' src='../../images/icon/ic_share_new.png'  bindtap='showGuideAction'>
+  </image>
+  <view class='count_back'>{{articleInfoResult.commentNum}}</view>
+  <image class='comment_back' src='../../images/icon/ic_comment_new.png' bindtap='commentAction'>
+    
+  </image>
+
+  <scroll-view class='scrollview' scroll-y scroll-into-view="{{scrollToView}}" bindscrolltolower="{{loadMoreData? 'refreshFooter': ''}}" style='height: calc(100vh - {{navigationHeight}});'  scroll-top='{{scrollTopNum}}' enable-back-to-top="true"  scroll-with-animation="true">
+
+    <import src='../../wxParse/wxParse.wxml'/>
+    <view id='content' class="content">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    </view>
+  </scroll-view>
+
+</view>

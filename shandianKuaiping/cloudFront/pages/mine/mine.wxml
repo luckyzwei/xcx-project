@@ -1,0 +1,45 @@
+<view class='root'>
+  <view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <view class='title'>闪电快评</view>
+  </view>
+
+  <scroll-view style='height: calc(100vh - {{navigationHeight}});' scroll-y>
+
+    <view class='user'>
+      <image src='{{avatarUrl}}'></image>
+      <view>{{nickName}}</view>
+    </view>
+    <view class='thumb' bindtap='clickThumb'>
+      <image class='icon' src='../../images/icon/ic_me_comment.png'></image>
+      <view>我的评论</view>
+      <image class='arrow' src='../../images/icon/arrow.png'></image>
+    </view>
+    <view class='line'></view>
+    <view class='notify' bindtap='clickNotify' wx:if='{{notifyCount > 0}}'>
+      <image class='icon' src='../../images/icon/ic_me_message.png'></image>
+      <view>消息提醒</view>
+      <view class='count'>{{notifyCount}}</view>
+      <view class='badge'></view>
+    </view>
+    <view class='notify' bindtap='clickNotify' wx:if='{{notifyCount == 0}}'>
+      <image class='icon' src='../../images/icon/ic_me_message.png'></image>
+      <view>消息提醒</view>
+      <image class='arrow' src='../../images/icon/arrow.png'></image>
+    </view>
+    <view class='gap'></view>
+    
+    <view class='history' bindtap='clickHistory'>
+      <image class='icon' src='../../images/icon/ic_me_footprint.png'></image>
+      <view>我的足迹</view>
+    </view>
+    <view class='line'></view>
+
+    <view class='list'>
+      <block wx:for='{{historyList}}'>
+        <view class='info' bindtap='clickOnceHistory' data-item='{{item}}' data-index='{{index}}'>{{item.title}}</view>
+        <view class='line' wx:if='{{index != historyList.length - 1}}'></view>
+      </block>
+    </view>
+
+  </scroll-view>
+</view>

@@ -1,0 +1,42 @@
+<view class='root'>
+  <view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></image>
+    <view class='title'>消息提醒</view>
+  </view>
+  <view class='banner'>
+    <block wx:for='{{articleTypeList}}'>
+      <view class='item' bindtap='changeType' data-info='{{item}}'>
+        <view class='info {{currentType==index? "red" : "black"}}'>{{item.typeName}}</view>
+        <view class='stamp {{currentType==index? "show" : "hide"}}'></view>
+      </view>
+      
+    </block>
+    
+  </view>
+  <scroll-view style='height: calc(100vh - {{navigationHeight}} - 82rpx);' scroll-y scroll-top='{{scrollTopNum}}' bindscrolltolower="{{loadMoreData? 'refreshFooter': ''}}" enable-back-to-top="true" scroll-with-animation="true">
+    <block wx:for='{{dataList}}'>
+    <view class='item' bindtap='clickAction' data-item='{{item}}'>
+      <view class='user'>
+        <image src='{{item.userlogo}}'></image>
+        <view class='name' wx:if='{{currentType==0}}'>{{item.username}}</view>
+        <view class='desc'>{{item.desc}}</view>
+        <view class='date'>{{item.createDate}}</view>
+      </view>
+      <view class='info'>
+      <view class='content'>{{item.content}}</view>
+      <image src='../../images/icon/ic_like_hl.png' wx:if='{{currentType==1}}'></image>
+      </view>
+      <view class='image' wx:if='{{item.picture}}'>(图片)</view>
+      <view class='article'>
+        <image src='../../images/icon/ic_me_link.png'></image>
+        <view>{{item.title}}</view>
+      </view>
+    </view>
+    <view class='gap' wx:if='{{index != dataList.length - 1}}'></view>
+  </block>
+  <view class='footerRefresh {{articleList.length == 0 ? "hide" : "show_flex"}}'>
+      <view>{{loadMoreData?"正在努力加载...":"已经到底啦"}}</view>
+      <image class='{{loadMoreData ? "show" : "hide"}}' src='../../images/icon/refresh.png'></image>
+    </view>
+  </scroll-view>
+</view>

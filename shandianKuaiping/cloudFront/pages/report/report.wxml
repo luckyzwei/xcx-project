@@ -1,0 +1,27 @@
+<view class='root'>
+  <view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+    <image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></image>
+    <view class='title'>投诉</view>
+  </view>
+
+  <view class='message'>请选择投诉理由：</view>
+  <block wx:for='{{dataList}}'>
+    <view class='item' bindtap='clickAction' data-index='{{index}}'>
+      <image src='{{selectIndex == index ? "../../images/icon/ic_report_ring_hl.png" : "../../images/icon/ic_report_ring.png"}}'></image>
+      <view>{{item}}</view>
+    </view>
+    <view class='line'></view>
+  </block>
+
+  <textarea class='{{selectIndex != 4 ? "hide" : "show"}}' placeholder='请输入您的投诉原因（最多100字，非必填）' placeholder-class='textholder' bindinput='inputAction' maxlength='100' cursor-spacing='200' show-confirm-bar="">
+  </textarea>
+
+  <view class='line' wx:if='{{selectIndex == 4}}'></view>
+
+  <view class='bottom'>
+    <view class='cancel' bindtap='backAction'>取消</view>
+    <view class='submit' bindtap='submitAction'>投诉</view>
+  </view>
+
+
+</view>
