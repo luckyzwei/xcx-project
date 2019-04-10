@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/details/details",
+    "pages/list/list",
+    "pages/comment/comment"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FED93B",
+    "navigationBarTitleText": "话题精华小程序",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  }
+}

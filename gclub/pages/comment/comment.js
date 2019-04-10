@@ -11,15 +11,13 @@ import {
   uploadFile
 } from "../../utils/api.js"
 
-import {
-  MessageCenter
-} from '../../utils/MessageCenter.js';
+// import { MessageCenter } from '../../utils/MessageCenter.js';
 
 const utils = require('../../utils/util.js')
 const Promise = require('../../utils/es6-promise');
-var WxParse = require('../../wxParse/wxParse.js');
-let message = new MessageCenter();
-message.register('shareImg');
+// var WxParse = require('../../wxParse/wxParse.js');
+// let message = new MessageCenter();
+// message.register('shareImg');
 const app = getApp();
 let timer;
 
@@ -35,7 +33,35 @@ Page({
     showGuide: false,
     scrollToView: '', //锚点
     dataList: [ //一级评论展示个数
-
+      {
+        name:212,
+      },
+      {
+        name: 212,
+      },
+      {
+        name: 212,
+      },
+      {
+        name: 212,
+      },
+      {
+        name:212,
+      },
+      {
+        name: 212,
+      },
+      {
+        name: 212,
+      }, {
+        name: 212,
+      }, {
+        name: 212,
+      }, {
+        name: 212,
+      }, {
+        name: 212,
+      },
     ],
     navigationHeight: '64px',
     subDataList: [ //二级评论展示个数
@@ -43,7 +69,7 @@ Page({
     voteEnd: false, //投票是否结束
     editing: false, //是否编辑
     inputValue: "", //编辑信息
-    recommandArticleList: [], //推荐文章列表
+    recommandArticleList: [],//推荐文章列表
     selectedCommentInfo: {}, //选中的评论信息
     selectedCommentIndex: 0, //选中的评论index
     selectedOnceComment: false, //是否已经选中了一条评论
@@ -60,7 +86,7 @@ Page({
     pageSize: 10, //每页数量
     radioVote: [0, 0], //投票比例
     isVoting: false, //是否投过票
-    reverlAllFlag: false, //是否展开全文
+    reverlAllFlag: false,//是否展开全文
     selectedToUserFromId: "", //发出的fromid
     selectedToUserFromName: "", //发出的fromname
     selectedToUserType: 1,
@@ -83,9 +109,9 @@ Page({
     scrolltop: 0,
     voteImage: '',
     formId: '',
-    scrollTopNum: 0, //滚回顶部
-    keyboardHeight: 0, //键盘弹起高度
-    enableTouchShadow: false, //是否可以点击阴影
+    scrollTopNum: 0,//滚回顶部
+    keyboardHeight: 0,//键盘弹起高度
+    enableTouchShadow: false,//是否可以点击阴影
     // 触摸开始时间
     touchStartTime: 0,
     // 触摸结束时间
@@ -94,17 +120,17 @@ Page({
     lastTapTime: 0,
     author: {},
     thumbAnimation: false, //是否有动画
-    totalCount: 0
+    totalCount:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
-    app.globalData.G_SDK.loading('pages/main/main')
-
-    if (options.url) {
+  onLoad: function (options) {
+   
+    // app.globalData.G_SDK.loading('pages/main/main')
+    
+    if(options.url){
       var info = {
         'sharePicture': options.url,
         'sharePictureWidth': options.width,
@@ -126,7 +152,7 @@ Page({
         articleId: options.id ? options.id : this.data.articleId,
         articleInfoResult: articleInfoResult
       })
-    } else {
+    }else {
       var author = {
         'nickName': options.name,
         'logoPath': options.logo,
@@ -152,21 +178,21 @@ Page({
       })
     }
 
-    this.getSuperComments();
+    // this.getSuperComments();
 
 
   },
-  onReady: function(options) {
+  onReady: function (options) {
     app.globalData.G_SDK.loaded('pages/main/main')
   },
 
-  onShow: function() {
+  onShow: function () {  
     var that = this;
-    this.statisticsEnter();
+    // this.statisticsEnter();
 
 
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         if (res.model.indexOf('iPhone X') != -1 || res.model.indexOf('unknown') != -1) {
           that.setData({
             navigationHeight: '88px'
@@ -175,8 +201,10 @@ Page({
       },
     })
 
+    console.log(this.data.navigationHeight,'navigationHeight')
+
     if (!wx.getStorageSync('userinfo') && this.data.articleInfoResult.length == 0) {
-      this.getSuperComments();
+      // this.getSuperComments();
     }
 
     if (!wx.getStorageSync('unionid') || wx.getStorageSync('unionid').length == 0) {
@@ -198,28 +226,26 @@ Page({
   },
 
 
-  getUserInfoAll: function(e) {
+  getUserInfoAll: function (e) {
     var that = this;
     app.getUserInfoAll(e, res => {
       that.setData({
         hasUserInfo: res.hasUserInfo
       })
       if (res.hasUserInfo) {
-        that.getSuperComments();
-        that.statisticsLoad();
+        // that.getSuperComments();
+        // that.statisticsLoad();
       }
     })
   },
   /**
    * 返回功能
    */
-  closeGuideAction: function() {
-    this.setData({
-      showGuide: false
-    })
+  closeGuideAction: function () {
+    this.setData({ showGuide: false })
   },
 
-  backAction: function() {
+  backAction: function () {
     if (getCurrentPages().length == 1) {
       wx.navigateTo({
         url: '../list/list',
@@ -231,7 +257,7 @@ Page({
     }
 
   },
-  homeAction: function() {
+  homeAction: function () {
     if (getCurrentPages().length == 1) {
       wx.navigateTo({
         url: '../list/list',
@@ -263,14 +289,14 @@ Page({
 
       this.setData({
         commentCount: Math.floor(Math.random() * res.pageInfo.totalRecords),
-        totalCount: res.pageInfo.totalRecords
+        totalCount:res.pageInfo.totalRecords
       })
       this.parseSuperComments(res);
 
     })
   },
 
-  changeImage: function(e) {},
+  changeImage: function (e) { },
 
   /**
    * 解析一级评论
@@ -283,7 +309,7 @@ Page({
     }
     let dataList = this.data.dataList;
     var that = this;
-    res.resultContent.map(function(item, index) {
+    res.resultContent.map(function (item, index) {
 
       var object = {
         "fromUserLogoPath": item.fromUser.logoPath,
@@ -324,7 +350,7 @@ Page({
       loading: false
     });
 
-
+  
 
 
   },
@@ -337,7 +363,7 @@ Page({
   parseChildComments(res) {
     let subDataList = [];
 
-    res.resultContent.map(function(item, index) {
+    res.resultContent.map(function (item, index) {
       var object = {
         "fromUserLogoPath": item.fromUser.logoPath,
         "fromUserName": item.fromUser.nickName,
@@ -367,16 +393,14 @@ Page({
   /**
    * 滚动评论
    */
-  rollScroll: function(e) {
+  rollScroll: function (e) {
 
     if (e.detail.scrollTop * 2 >= e.detail.scrollHeight - 6) {
       clearInterval(timer)
       var that = this;
       setTimeout(() => {
         timer = setInterval(() => {
-          that.setData({
-            scrolltop: that.data.scrolltop + 2
-          })
+          that.setData({ scrolltop: that.data.scrolltop + 2 })
         }, 100);
         var list = []
         list.push(that.data.topicRecommentList[3])
@@ -397,7 +421,7 @@ Page({
   /**
    * 输入信息值改变
    *  */
-  textInput: function(e) {
+  textInput: function (e) {
     this.setData({
       inputValue: e.detail.value
     })
@@ -405,7 +429,7 @@ Page({
   /**
    * 获取焦点
    */
-  inputAction: function(e) {
+  inputAction: function (e) {
 
     this.setData({
       editing: true,
@@ -422,14 +446,11 @@ Page({
 
   },
   //键盘弹起
-  focusAction: function(e) {
+  focusAction: function (e) {
     // if(e.detail.height != 0) return;
     console.log(e);
     console.log('--------')
-    this.setData({
-      keyboardHeight: e.detail.height,
-      enableTouchShadow: false
-    })
+    this.setData({ keyboardHeight: e.detail.height, enableTouchShadow: false })
     // var animation = wx.createAnimation({
 
     //   duration: 700,
@@ -443,21 +464,19 @@ Page({
     // })
 
   },
-  blurAction: function(e) {
-    this.setData({
-      keyboardHeight: 0
-    })
+  blurAction: function (e) {
+    this.setData({ keyboardHeight: 0 })
   },
 
   // 发送formid
-  formSubmit: function(e) {
+  formSubmit: function (e) {
     utils.formSubmitAuth(e)
   },
   /**
    * 关闭遮罩
    */
-  touchShadow: function() {
-
+  touchShadow: function () {
+    
     this.setData({
       editing: false,
       bottomHolder: "",
@@ -471,7 +490,7 @@ Page({
   /**
    * 投票选中左侧
    */
-  voteYes: function() {
+  voteYes: function () {
 
     if (this.data.isVoting) return;
     this.setData({
@@ -506,7 +525,7 @@ Page({
   /**
    * 投票选中右侧
    */
-  voteNo: function() {
+  voteNo: function () {
 
     if (this.data.isVoting) return;
     this.setData({
@@ -538,7 +557,7 @@ Page({
   /**
    * 显示全文按钮
    */
-  showAllContent: function() {
+  showAllContent: function () {
     if (this.data.showAllContent) {
       this.navigateToContent()
     }
@@ -548,7 +567,7 @@ Page({
 
     this.statisticsAllContent();
   },
-  reportAction: function(e) {
+  reportAction: function (e) {
 
     var url = '../report/report'
     if (e.currentTarget.dataset.item) {
@@ -568,7 +587,7 @@ Page({
   /**
    * 调用分享按钮
    */
-  shareAction: function() {
+  shareAction: function () {
     wx.showToast({
       title: '分享',
     })
@@ -576,7 +595,7 @@ Page({
   /**
    * 点击输入框，获得焦点
    */
-  bottomCommentAction: function(e) {
+  bottomCommentAction: function (e) {
 
     this.setData({
       editing: true,
@@ -590,7 +609,7 @@ Page({
   /**
    * 点击二级评论按钮，弹出评论图层
    */
-  commentAction: function(e) {
+  commentAction: function (e) {
     let index = e.currentTarget.dataset.index;
     let {
       dataList
@@ -624,7 +643,7 @@ Page({
   /**
    * 收起二级评论
    */
-  hideSubComment: function() {
+  hideSubComment: function () {
     this.setData({
       videoHeight: this.data.video ? '400rpx' : '0rpx',
       selectedOnceComment: false,
@@ -638,7 +657,7 @@ Page({
   /**
    * 点赞
    */
-  thumbAction: function(e) {
+  thumbAction: function (e) {
     if (this.data.thumbing) return;
     let index = e.currentTarget.dataset.index;
     let {
@@ -680,10 +699,7 @@ Page({
         } = this.data;
         let item = dataList[index];
         item.thumbAnimation = false;
-        this.setData({
-          dataList,
-          selectedCommentInfo: item
-        })
+        this.setData({ dataList, selectedCommentInfo: item })
       }, 200)
     })
 
@@ -703,7 +719,7 @@ Page({
   /**
    * 踩
    */
-  stampAction: function(e) {
+  stampAction: function (e) {
     if (this.data.thumbing) return;
     let index = e.currentTarget.dataset.index;
     let {
@@ -749,7 +765,7 @@ Page({
   /**
    * 子评论点赞
    */
-  subThumbAction: function(e) {
+  subThumbAction: function (e) {
     if (this.data.thumbing) return;
     let index = e.currentTarget.dataset.index;
     let {
@@ -789,9 +805,7 @@ Page({
         } = this.data;
         let item = subDataList[index];
         item.thumbAnimation = false;
-        this.setData({
-          subDataList
-        })
+        this.setData({ subDataList })
       }, 200)
     })
 
@@ -814,7 +828,7 @@ Page({
   /**
    * 子评论踩
    */
-  subStampAction: function(e) {
+  subStampAction: function (e) {
     if (this.data.thumbing) return;
     let index = e.currentTarget.dataset.index;
     let {
@@ -857,7 +871,7 @@ Page({
   /**
    * 上拉加载
    */
-  refreshFooter: function() {
+  refreshFooter: function () {
     if (this.data.loading) return;
     this.setData({
       currentPage: this.data.currentPage + 1,
@@ -878,7 +892,7 @@ Page({
   /**
    * 匿名
    */
-  anonyAction: function() {
+  anonyAction: function () {
     this.setData({
       anony: !this.data.anony
     })
@@ -887,9 +901,7 @@ Page({
         showAnony: true
       })
       setTimeout(() => {
-        this.setData({
-          showAnony: false
-        })
+        this.setData({ showAnony: false })
       }, 1500);
 
     }
@@ -897,7 +909,7 @@ Page({
   /**
    * 点击图片放大
    */
-  clickImage: function(e) {
+  clickImage: function (e) {
     let image = e.currentTarget.dataset.image;
     wx.previewImage({
       current: image, // 当前显示图片的http链接
@@ -908,7 +920,7 @@ Page({
   /**
    * 删除评论图
    */
-  deletePic: function() {
+  deletePic: function () {
     this.setData({
       recommentImage: ''
     })
@@ -916,7 +928,7 @@ Page({
   /**
    * 点击热门推荐
    */
-  recommandAction: function(e) {
+  recommandAction: function (e) {
     wx.navigateTo({
       url: '../main/main?articleId=' + e.currentTarget.dataset.item.id
     })
@@ -927,7 +939,7 @@ Page({
   /**
    * 新增评论
    */
-  addComment: function() {
+  addComment: function () {
     var regu = "^[ ]+$";
     var re = new RegExp(regu);
     if ((this.data.inputValue.length == 0 || re.test(this.data.inputValue)) && this.data.recommentImage.length == 0) {
@@ -969,23 +981,24 @@ Page({
         status: 1,
         type: this.data.selectedCommentInfo.type == 1 || this.data.selectedCommentInfo.type == 3 ? (!this.data.anony ? 1 : 2) : (!this.data.anony ? 3 : 4)
       }
-    } : {
-      query: {
-        articleId: this.data.articleId,
-        content: this.data.inputValue,
-        status: 1,
-        type: !this.data.anony ? 1 : 2
+    } :
+      {
+        query: {
+          articleId: this.data.articleId,
+          content: this.data.inputValue,
+          status: 1,
+          type: !this.data.anony ? 1 : 2
+        }
+      }) : {
+        query: {
+          parentId: this.data.selectedCommentInfo.id,
+          toUserId: this.data.selectedToUserFromId,
+          articleId: this.data.articleId,
+          content: this.data.inputValue,
+          status: 1,
+          type: this.data.selectedToUserType == 1 || this.data.selectedToUserType == 3 ? (!this.data.anony ? 1 : 2) : (!this.data.anony ? 3 : 4)
+        }
       }
-    }) : {
-      query: {
-        parentId: this.data.selectedCommentInfo.id,
-        toUserId: this.data.selectedToUserFromId,
-        articleId: this.data.articleId,
-        content: this.data.inputValue,
-        status: 1,
-        type: this.data.selectedToUserType == 1 || this.data.selectedToUserType == 3 ? (!this.data.anony ? 1 : 2) : (!this.data.anony ? 3 : 4)
-      }
-    }
 
     if (this.data.recommentImage != '') {
       addCommentParam.query['pictureUrl'] = this.data.recommentImage
@@ -1104,10 +1117,10 @@ Page({
 
 
 
-  chooseImage: function() {
+  chooseImage: function () {
     var that = this
     wx.chooseImage({
-      success: function(res) {
+      success: function (res) {
         let params = {
           query: res.tempFilePaths[0]
         }
@@ -1123,15 +1136,13 @@ Page({
     })
   },
 
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
 
   },
 
-  shareMomentsAction: function() {
-
-    this.setData({
-      showGuide: false
-    })
+  shareMomentsAction: function () {
+    
+    this.setData({ showGuide: false })
 
     if (this.data.articleInfoResult.sharePicture) {
       var info = this.data.articleInfoResult.sharePicture;
@@ -1148,82 +1159,92 @@ Page({
 
 
 
-  onHide: function() {
+  onHide: function () {
     this.statisticsClose();
   },
-  onUnload: function() {
+  onUnload: function () {
     this.statisticsClose();
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function(options) {
-    var that = this;
-    this.setData({
-      showGuide: false
-    })
-    var shareObj = {
-      title: this.data.articleInfoResult.title, // 默认是小程序的名称(可以写slogan等)
-      path: '/pages/main/main?articleId=' + this.data.articleId, // 默认是当前页面，必须是以‘/’开头的完整路
-    };
-    if (options.from == 'button') {
-      var eData = options.target.dataset;
+  onShareAppMessage: function (options) {
+    // wx.showShareMenu({
+    //   withShareTicket: true
+    // })
+    // return {
+    //   title:'title',
+    //   path: "/pages/comment/comment",
+    //   success:(res)=>{
+    //     console.log(res,'onShareAppMessage')
+    //   }
+    // }
 
-      if (options.target.dataset.from) {
-        this.statisticsShareButton();
-        if (that.data.articleInfoResult.transpondUrl.length != 0) {
-          shareObj['imageUrl'] = 'https://dev-article.s3.cn-north-1.amazonaws.com.cn/' + that.data.articleInfoResult.transpondUrl //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
-        }
 
-        return shareObj;
-      } else {
-        this.statisticsShareButtonItem();
-        var item = eData.info;
-        shareObj['title'] = this.data.articleInfoResult.title
-        shareObj['imageUrl'] = item.shareImage
+    // var that = this;
+    // this.setData({ showGuide: false })
+    // var shareObj = {
+    //   title: this.data.articleInfoResult.title, // 默认是小程序的名称(可以写slogan等)
+    //   path: '/pages/main/main?articleId=' + this.data.articleId, // 默认是当前页面，必须是以‘/’开头的完整路
+    // };
+    // if (options.from == 'button') {
+    //   var eData = options.target.dataset;
 
-        return shareObj
+    //   if (options.target.dataset.from) {
+    //     this.statisticsShareButton();
+    //     if (that.data.articleInfoResult.transpondUrl.length != 0) {
+    //       shareObj['imageUrl'] = 'https://dev-article.s3.cn-north-1.amazonaws.com.cn/' + that.data.articleInfoResult.transpondUrl //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+    //     }
 
-      }
-    }
+    //     return shareObj;
+    //   } else {
+    //     this.statisticsShareButtonItem();
+    //     var item = eData.info;
+    //     shareObj['title'] = this.data.articleInfoResult.title
+    //     shareObj['imageUrl'] = item.shareImage
 
-    if (options.from == 'menu') {
-      this.statisticsShareMenu();
-      if (that.data.articleInfoResult.transpondUrl.length != 0) {
-        shareObj['imageUrl'] = 'https://dev-article.s3.cn-north-1.amazonaws.com.cn/' + that.data.articleInfoResult.transpondUrl //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
-      }
-      // 返回shareObj
+    //     return shareObj
 
-      return shareObj;
-    }
+    //   }
+    // }
+
+    // if (options.from == 'menu') {
+    //   this.statisticsShareMenu();
+    //   if (that.data.articleInfoResult.transpondUrl.length != 0) {
+    //     shareObj['imageUrl'] = 'https://dev-article.s3.cn-north-1.amazonaws.com.cn/' + that.data.articleInfoResult.transpondUrl //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径，支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+    //   }
+    //   // 返回shareObj
+
+    //   return shareObj;
+    // }
   },
 
 
   /**
    * 锚点
    */
-  navigateToComment: function() {
+  navigateToComment: function () {
     this.setData({
       scrollToView: 'comment',
       commentCount: 0
     })
     this.inputAction()
   },
-  navigateToContent: function() {
+  navigateToContent: function () {
     this.setData({
       scrollToView: 'content'
     })
   },
   //埋点
-  statisticsEnter: function() {
+  statisticsEnter: function () {
     app.aldstat.sendEvent('进入小程序(包括授权前)', {
       '内容ID': this.data.articleId,
     });
     app.globalData.G_SDK.push('pages/main/main', '进入小程序(包括授权前)')
 
   },
-  statisticsLoad: function() {
+  statisticsLoad: function () {
     app.aldstat.sendEvent('进入小程序(授权后)', {
       '内容ID': this.data.articleId,
       '用户openID': wx.getStorageSync('openid'),
@@ -1232,7 +1253,7 @@ Page({
     app.globalData.G_SDK.push('pages/main/main', '进入小程序(授权后)', wx.getStorageSync('unionid'))
 
   },
-  statisticsUser: function() {
+  statisticsUser: function () {
     app.aldstat.sendEvent('打开详情页面(有数据展示后)', {
       '内容ID': this.data.articleId,
       '用户openID': wx.getStorageSync('openid'),
@@ -1241,14 +1262,14 @@ Page({
     app.globalData.G_SDK.push('pages/main/main', '进入小程序(有数据展示后)', wx.getStorageSync('unionid'))
 
   },
-  statisticsClose: function() {
+  statisticsClose: function () {
     app.aldstat.sendEvent('退出当前页或小程序', {
       '内容ID': this.data.articleId,
       '当前是否获得到数据': this.data.articleInfoResult.length == 0 ? "否" : "是"
     });
 
   },
-  statisticsTopic: function() {
+  statisticsTopic: function () {
     app.aldstat.sendEvent('点击话题区域', {
       '用户openID': wx.getStorageSync('openid'),
       '显示新消息数量': this.data.commentCount,
@@ -1256,14 +1277,14 @@ Page({
     });
   },
 
-  statisticsAllContent: function() {
+  statisticsAllContent: function () {
     app.aldstat.sendEvent('点击展开全文', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId
     });
   },
 
-  statisticsVote: function(voteId) {
+  statisticsVote: function (voteId) {
     app.aldstat.sendEvent('投票', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId,
@@ -1272,7 +1293,7 @@ Page({
   },
 
 
-  statisticsCheck: function(item) {
+  statisticsCheck: function (item) {
     app.aldstat.sendEvent('查看回复', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId,
@@ -1281,7 +1302,7 @@ Page({
     });
   },
 
-  statisticsComment: function(res) {
+  statisticsComment: function (res) {
     app.aldstat.sendEvent('发表评论', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId,
@@ -1289,7 +1310,7 @@ Page({
     });
   },
 
-  statisticsThumb: function(item) {
+  statisticsThumb: function (item) {
     app.aldstat.sendEvent('点赞', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId,
@@ -1297,7 +1318,7 @@ Page({
       '被点赞者userId': item.fromUserId
     });
   },
-  statisticsStamp: function(item) {
+  statisticsStamp: function (item) {
     app.aldstat.sendEvent('点踩', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId,
@@ -1306,7 +1327,7 @@ Page({
     });
   },
 
-  statisticsSubComment: function(res) {
+  statisticsSubComment: function (res) {
     app.aldstat.sendEvent('回复', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId,
@@ -1315,21 +1336,21 @@ Page({
     });
   },
 
-  statisticsShareMenu: function() {
+  statisticsShareMenu: function () {
     app.aldstat.sendEvent('自带分享', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId
     });
   },
 
-  statisticsShareButton: function() {
+  statisticsShareButton: function () {
     app.aldstat.sendEvent('内容分享', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId
     });
   },
 
-  statisticsShareButtonItem: function() {
+  statisticsShareButtonItem: function () {
     app.aldstat.sendEvent('评论分享', {
       '用户openID': wx.getStorageSync('openid'),
       '内容ID': this.data.articleId
@@ -1337,14 +1358,15 @@ Page({
   },
 
 
-  preventTouchMove: function() {
+  preventTouchMove: function () {
 
   },
 
   /// 双击滚动顶部
-  doubleTap: function(e) {
+  doubleTap: function (e) {
     var that = this
     // 控制点击事件在350ms内触发，加这层判断是为了防止长按时会触发点击事件
+    console.log(that.touchEndTime)
     if (that.touchEndTime - that.touchStartTime < 350) {
       // 当前点击的时间
       var currentTime = e.timeStamp
@@ -1356,19 +1378,17 @@ Page({
       if (currentTime - lastTapTime < 300) {
         // 成功触发双击事件时，取消单击事件的执行
         clearTimeout(that.lastTapTimeoutFunc);
-        that.setData({
-          scrollTopNum: 0
-        })
+        that.setData({ scrollTopNum: 0 })
       }
     }
   },
   /// 按钮触摸开始触发的事件
-  touchStart: function(e) {
+  touchStart: function (e) {
     this.touchStartTime = e.timeStamp
   },
 
   /// 按钮触摸结束触发的事件
-  touchEnd: function(e) {
+  touchEnd: function (e) {
     this.touchEndTime = e.timeStamp
   },
 

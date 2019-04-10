@@ -1,0 +1,107 @@
+<view class="container">
+  <!-- 遮罩层 -->
+  <view class='shadowview {{editing?"show":"hide"}}' bindtap='touchShadow'></view>
+
+  <navigationBar is-back='{{true}}' heigth-status='{{statusBarHeight}}' height-title='{{titleBarHeight}}' bindscrolltop='doubleTap'></navigationBar>
+
+  <scroll-view class='scrollview' scroll-into-view='comment' style='height:calc(100vh - 110rpx - {{statusBarHeight}}px - {{titleBarHeight}}px)' scroll-y enable-back-to-top="true" scroll-with-animation="true" scroll-top='{{scrollTopNum}}'>
+    <view id='comment' wx:if='{{loading}}'>
+      <view class='topic-header'>
+        <view class='topic-title overflowSpace'>
+          <block wx:for='{{post_info.topic_name}}'>
+            <text data-name='{{item}}' bindtap='goBack'>{{item}} </text>
+          </block>
+        </view>
+        <view id='topic-content' class='topic-content number-topic-item'>
+          <view class='top'>
+            <image class='img' src='{{post_info.avatar_url}}'></image>
+            <view class='name'>{{post_info.nickname}}</view>
+            <view class='time'>{{post_info.create_date.splice(5)}}</view>
+          </view>
+          <view class='center'>{{post_info.content}}</view>
+          <view class='footer'>
+            <view class='footer-msg'>
+              <image class='msg-img' src='../../images/icon/ic_msg.png'></image>
+              {{post_info.comments}}
+            </view>
+            <block wx:if='{{!hasUserInfo}}'>
+              <view class='footer-like {{post_info.thumbAnimation?"thumbAnimation":""}}'>
+                <button class='hideButton' open-type='getUserInfo' bindgetuserinfo='getUserInfo'></button>
+                <image class='like-img' src='{{post_info.like?"../../images/icon/ic_like_hi.png":"../../images/icon/ic_like.png"}}'></image>
+                <text class='{{post_info.like?"highlight":""}}'>{{post_info.likes}}</text>
+              </view>
+            </block>
+            <block wx:if='{{hasUserInfo}}'>
+              <view class='footer-like {{post_info.thumbAnimation?"thumbAnimation":""}}' bindtap='postThumbAction'>
+                <image class='like-img' src='{{post_info.like?"../../images/icon/ic_like_hi.png":"../../images/icon/ic_like.png"}}'></image>
+                <text class='{{post_info.like?"highlight":""}}'>{{post_info.likes}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <view wx:if='{{dataList.length>0&&listView!=0}}' class='topic-list' style='margin-top:{{listView - 30}}px'>
+        <view class='top'>
+          <view class='logo'></view>
+          <view class='title'>评论</view>
+        </view>
+        <block wx:for='{{dataList}}'>
+          <view class='item'>
+            <view class='left'>
+              <image class='nickUrl' src='{{item.avatar_url}}'></image>
+            </view>
+            <view class='right'>
+              <view class='top'>
+                <view class='child-left'>
+                  <view class='nickName'>{{item.nickname}}</view>
+                  <view class='time'>{{item.create_date}}</view>
+                </view>
+                <block wx:if='{{!hasUserInfo}}'>
+                <view class='child-right {{item.thumbAnimation?"thumbAnimation":""}}' >
+                  <button class='hideButton' open-type='getUserInfo' bindgetuserinfo='getUserInfo'></button>
+                  <image class='like-img' src='{{item.like?"../../images/icon/ic_like_hi.png":"../../images/icon/ic_like.png"}}'></image>
+                  <text class='{{item.like?"highlight":""}}'> {{item.likes}}</text>
+                </view>
+                </block>
+                <block wx:if='{{hasUserInfo}}'>
+                <view class='child-right {{item.thumbAnimation?"thumbAnimation":""}}' data-index='{{index}}' bindtap='thumbAction'>
+                  <image class='like-img' src='{{item.like?"../../images/icon/ic_like_hi.png":"../../images/icon/ic_like.png"}}'></image>
+                  <text class='{{item.like?"highlight":""}}'> {{item.likes}}</text>
+                </view>
+                </block>
+              </view>
+              <view class='content'>{{item.content}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view wx:else class='footerRefresh' style='margin-top:{{listView}}px'>
+        <view class='word'>还没有评论，快来抢第一条评论吧～</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class='footer-input {{editing?"hide":"show"}}'>
+    <view class='defalt' bindtap='inputAction'>
+      <image class='edit' src='../../images/icon/ic_tab_edit.png'></image>
+      <text>说说你的想法</text>
+    </view>
+    <view class='btnBox'>
+      <view class='btn'>发布</view>
+    </view>
+  </view>
+
+  <view class='keyboard_cover {{editing?"":"hide"}}' style='bottom:{{keyboardHeight}}px' bindtap='blurAction'>
+    <input class='edit' placeholder-class='holder' focus='{{editing}}' placeholder='说说你的想法' bindfocus='focusAction' bindblur='blurAction' bindinput='textInput' value='{{inputValue}}' confirm-type='search' cursor-spacing='54' adjust-position='' maxlength='-1'></input>
+    <block wx:if='{{!hasUserInfo}}'>
+      <view class='btnBox'>
+      <button class='hideButton' open-type='getUserInfo' bindgetuserinfo='getUserInfo'></button>
+      <view class='btn {{inputValue!=""?"btnHover":""}}'>发布</view>
+      </view>
+    </block>
+    <block wx:if='{{hasUserInfo}}'>
+     <view class='btn {{inputValue!=""?"btnHover":""}}' bindtap='postComment'>发布</view>
+     </block>
+  </view>
+
+</view>

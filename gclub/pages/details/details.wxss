@@ -1,0 +1,250 @@
+/* pages/details/details.wxss */
+.topic-header{
+ background: #FED93B;
+ height: 226rpx;
+ position: relative;
+}
+
+.topic-title{
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #000000;
+  padding: 30rpx;
+}
+
+.topic-content{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+.number-topic-item{
+  width: 690rpx;
+  box-sizing: border-box;
+  padding: 30rpx;
+  background: #FFFFFF;
+  box-shadow: 0 7rpx 14rpx 0 rgba(0,0,0,0.14);
+  border-radius: 20rpx;
+}
+.number-topic-item .top{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: PingFangSC-Regular;
+color: #999999
+}
+.number-topic-item .top .img{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.number-topic-item .top .name{
+font-size: 26rpx;
+margin: 0 20rpx;
+}
+.number-topic-item .top .time{
+font-size: 20rpx;
+}
+.number-topic-item .center{
+font-family: PingFangSC-Medium;
+font-size: 32rpx;
+color: #000000;
+padding-top: 23rpx;
+padding-bottom: 26rpx;
+}
+
+.number-topic-item .footer{
+  display: flex;
+  justify-content: flex-end;
+
+}
+.number-topic-item .footer .footer-msg,
+.number-topic-item .footer .footer-like
+{
+  font-family: PingFangSC-Regular;
+font-size: 26rpx;
+color: #B2B2B2;
+display: flex;
+align-content:center;
+}
+.number-topic-item .footer .footer-like{
+  margin-left:88rpx; 
+  margin-right: 30rpx;
+}
+.number-topic-item .footer .msg-img{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx
+}
+.number-topic-item .footer .like-img{
+   width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+
+.topic-list {
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  box-sizing: border-box;
+  margin-top: 91px;
+  transition: all .2s ease-out;
+}
+.topic-list .top {
+  display: flex;
+  align-items: center;
+}
+.topic-list .top .logo {
+  flex: none;
+   background: #FED93B;
+  border-radius: 5rpx;
+  width: 10rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.topic-list .top .title{
+  font-family: PingFangSC-Medium;
+font-size: 32rpx;
+color: #000000;
+}
+.topic-list .item{
+  display: flex;
+  margin: 40rpx 0; 
+  border-bottom:1px solid #E6E6E6;
+}
+.topic-list .item:last-child{
+  border:none;
+}
+
+.topic-list .item .right{
+  flex: auto;
+}
+.topic-list .item .left .nickUrl{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+.topic-list .item .right .top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topic-list .item .right .top .child-left{
+  display: flex;
+  flex-direction: column;
+}
+.child-left .nickName{
+  font-family: PingFangSC-Regular;
+font-size: 26rpx;
+color: #000000;
+margin-right: 20rpx;
+}
+.child-left .time{
+font-family: PingFangSC-Regular;
+font-size: 24rpx;
+color: #999999;
+}
+
+.topic-list .item .right .top .child-right {
+  font-family: PingFangSC-Regular;
+font-size: 26rpx;
+color: #B2B2B2;
+display: flex;
+align-content: center;
+margin-right: 30rpx;
+}
+.topic-list .item .right .top .child-right .like-img{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.topic-list .content{
+  margin:20rpx 0;
+  font-family: PingFangSC-Regular;
+font-size: 28rpx;
+color: #000000;
+}
+.footer-input,
+.keyboard_cover{
+  width: 100%;
+  height: 110rpx;
+  background: #FFFFFF;
+  box-shadow: 0 -4rpx 10rpx 0 rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  bottom:0;
+  left: 0;
+   z-index: 1001;
+}
+.keyboard_cover{
+  /* position:absolute;
+  bottom:0;
+  left: 0;
+   z-index: 1001; */
+}
+.footer-input .edit{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 28rpx;
+}
+.footer-input .defalt,
+.keyboard_cover .edit{
+  width: 536rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #F6F6F6;
+  border-radius: 40rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #000000;
+  padding: 0 36rpx;
+  box-sizing: border-box;
+  margin:  0 26rpx;
+}
+.footer-input .btnBox .btn,
+.keyboard_cover .btn{
+  margin-left: 20rpx;
+  width: 112rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  background: #F6F6F6;
+border-radius: 40rpx;
+font-family: PingFangSC-Medium;
+font-size: 28rpx;
+color: #000000;
+}
+.keyboard_cover .btn.btnHover{
+  background: #FED93B;
+}
+
+.shadowview{
+  position:absolute;
+z-index:999;
+width:100%;
+height:100%;
+opacity:0.2;
+background:#000000;
+
+}
+.show{
+  display: flex;
+}
+.hide{
+  display: none;
+}
+.footer-like,.child-right,.btnBox{
+  position: relative;
+}
+.hideButton{
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,41 @@
+<view class="container">
+  <navigationBar is-back='{{true}}' heigth-status='{{statusBarHeight}}' height-title='{{titleBarHeight}}' bindscrolltop='doubleTap'></navigationBar>
+  <scroll-view class='scrollview' scroll-into-view='body' style='height:calc(100vh - {{statusBarHeight}}px - {{titleBarHeight}}px)' scroll-y enable-back-to-top="true" scroll-with-animation="true" scroll-top='{{scrollTopNum}}'>
+    <view class="body" id='body'>
+      <view class="scroll-content">
+        <view class='topic-title'>{{topicName}}</view>
+        <view class='topic-content'>
+          <view wx:for='{{topicList}}' class='number-topic-item' data-id='{{item.post_id}}' bindtap='goDetail'>
+            <view class='top'>
+              <image class='img' src='{{item.avatar_url}}'></image>
+              <view class='name'>{{item.nickname}}</view>
+              <view class='time'>{{item.create_date.slice(5,10)}}</view>
+            </view>
+            <view class='center'>
+              {{item.content}}
+            </view>
+            <view class='footer'>
+              <view class='footer-msg'>
+                <image class='msg-img' src='../../images/icon/ic_msg.png'></image>
+                <view>{{item.comments}}</view>
+              </view>
+              <block wx:if='{{!hasUserInfo}}'>
+                <view class='footer-like {{item.thumbAnimation?"thumbAnimation":""}}'>
+                  <button class='hideButton' open-type='getUserInfo' bindgetuserinfo='getUserInfo'></button>
+                  <image class='like-img' src='{{item.like?"../../images/icon/ic_like_hi.png":"../../images/icon/ic_like.png"}}'></image>
+                  <view class='{{item.like?"highlight":""}}'> {{item.likes}}</view>
+                </view>
+              </block>
+              <block wx:if='{{hasUserInfo}}'>
+                <view class='footer-like {{item.thumbAnimation?"thumbAnimation":""}}' data-index='{{index}}' catchtap='thumbAction'>
+                  <image class='like-img' src='{{item.like?"../../images/icon/ic_like_hi.png":"../../images/icon/ic_like.png"}}'></image>
+                  <view class='{{item.like?"highlight":""}}'> {{item.likes}}</view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+    -webkit-overflow-scrolling: touch;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.qrcode-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: #2ABE76;
+    padding: 50px 20px;
+}
+.qrcode-content{
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 710px;
+    height: 1000px;
+    padding: 130px 70px;
+}
+.qrcode-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.qrcode-title .head_url{
+    width: 100px;
+    height: 100px;
+    margin-right: 30px;
+    border-radius: 8px;
+}
+.group-word .name{
+    font-family: PingFangSC-Medium;
+    font-size: 38px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+.group-word .des{
+    font-family: PingFangSC-Regular;
+    font-size: 32px;
+    color: #7F7F7F;
+}
+.qrcode-img {
+    padding-top: 60px;
+    padding-bottom: 67px;
+    text-align: center;
+}
+.qrcode-img .qrcode{
+    width: 500px;
+    height: 500px;
+}
+.des-buttom{
+    font-family: PingFangSC-Regular;
+    font-size: 32px;
+    color: #7F7F7F;
+    text-align: center;
+}
+
+.groupQrcode-content{
+  background: url("../images/bg_card.png") no-repeat;
+    width: 710px;
+    height: 1000px;
+
+}
+
+.g-title{
+    padding: 60px;
+}
+.g-title .img{
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+    margin-right: 30px;
+    vertical-align: middle;
+}
+.g-title .name{
+    font-family: PingFangSC-Medium;
+    font-size: 40px;
+    color: #333333;
+}
+.g-qrcode{
+    text-align: center;
+}
+.g-qrcode-des{
+    font-family: PingFangSC-Regular;
+    font-size: 36px;
+    color: #333333;
+    line-height: 46px;
+    margin:60px 0;
+}
+.g-code{
+    width: 400px;
+    height: 400px;
+}
+.center{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}

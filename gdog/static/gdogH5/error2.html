@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">
+    <title>扫码入群</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <style>
+        .qrcode-content{
+            position: relative;
+        }
+        .center{
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%,-50%);
+            text-align: center;
+        }
+        .null-icon{
+            width: 196px;
+            height: 196px;
+            margin-bottom: 51px;
+        }
+        .word span{
+            font-family: PingFangSC-Regular;
+            font-size: 30px;
+            color: #333333;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="qrcode-wrapper">
+   <div class="qrcode-content">
+       <div class="center">
+           <img  class="null-icon" src="./images/pic_null.png" alt="">
+           <div class="word"></div>
+       </div>
+   </div>
+</div>
+</body>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/utils.js"></script>
+<script>
+    $(function () {
+        var type =getQueryString('type')
+        var barnch=''
+        if(type==1403){//群二维码已失效 1403,
+            barnch = '<span>二维码已不存在</span>'
+        }else{ //机器人当日额度用完 1404
+            barnch = ' <span>今天入群名额已经用完啦' + '<br/>'+ '明天趁早再来扫码哦~</span>'
+        }
+        $('.word').empty().append(barnch)
+    })
+</script>
+</html>
+

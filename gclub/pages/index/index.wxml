@@ -1,0 +1,69 @@
+<view class="container">
+  <navigationBar is-back='{{false}}' heigth-status='{{statusBarHeight}}' height-title='{{titleBarHeight}}' bindscrolltop='doubleTap'></navigationBar>
+  <scroll-view scroll-into-view='body' style='height:calc(100vh - {{statusBarHeight}}px - {{titleBarHeight}}px)' scroll-y enable-back-to-top="true" scroll-with-animation="true" scroll-top='{{scrollTopNum}}'>
+
+    <view class="body" id='body'>
+      <view class="scroll-content">
+        <view class='topic-header'>
+          <view class='nick-urls'>
+            <image class='all-nick-url' src='../../images/ic_nick_url.png'></image>
+          </view>
+          <text class='group-name'>栗子话题小组</text>
+          <text class='topic-more'>正在讨论…</text>
+        </view>
+        <view class='topic-scroll'>
+          <block wx:for='{{dataList}}'>
+            <view class='topic-item'>
+              <button wx:if='{{!hasUserInfo}}' class='hideButton' open-type='getUserInfo' bindgetuserinfo='getUserInfo'></button>
+              <view class='item' data-item='{{item}}' data-hasuserinfo='{{hasUserInfo}}' bindtap='goList'>
+                <view class='topic'>
+                  {{item.topic_name}}
+                </view>
+                <view class='num'>
+                  <image class='topic-number-img' src='../../images/icon/ic_number.png'></image>
+                  {{item.views}}
+                </view>
+                <view class='num'>
+                  <image class='topic-msg-img' src='../../images/icon/ic_msg.png'></image>
+                  {{item.posts}}
+                </view>
+              </view>
+            </view>
+          </block>
+          <!-- <block wx:if='{{!hasUserInfo}}' wx:for='{{dataList}}'>
+          <view class='topic-item'>
+            <button class='hideButton' open-type='getUserInfo' bindgetuserinfo='getUserInfo'></button>
+            <view class='item'>
+              <view class='topic'>{{item.topic_name}}</view>
+              <view class='num'>
+                <image class='topic-number-img' src='../../images/icon/ic_number.png'></image>
+                {{item.views}}
+              </view>
+              <view class='num'>
+                <image class='topic-msg-img' src='../../images/icon/ic_msg.png'></image>{{item.posts}}
+              </view>
+            </view>
+          </view>
+        </block>
+        <block wx:if='{{hasUserInfo}}'  wx:for='{{dataList}}' >
+          <view class='topic-item'>
+            <view class='item' data-item='{{item}}' bindtap='goList'>
+              <view class='topic'>
+                {{item.topic_name}}
+              </view>
+              <view class='num'>
+                <image class='topic-number-img' src='../../images/icon/ic_number.png'></image>
+                {{item.views}}
+              </view>
+              <view class='num'>
+                <image class='topic-msg-img' src='../../images/icon/ic_msg.png'></image>
+                {{item.posts}}
+              </view>
+            </view>
+          </view>
+        </block> -->
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

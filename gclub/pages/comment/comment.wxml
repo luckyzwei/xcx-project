@@ -1,27 +1,10 @@
-<view class='sign' wx:if='{{!hasUserInfo}}'>
-  <view class='shadow' style='height:calc(100vh - {{navigationHeight}});top:{{navigationHeight}}'>
-    <view class='background'>
-      <image src='../../images/icon/logo.png'></image>
-      <button class='canIUse-btn' open-type="getUserInfo" bindgetuserinfo="getUserInfoAll">一起加入讨论</button>
-    </view>
-  </view>
-  <view class='navigation_bar' style='height:{{navigationHeight}};'>
-    <view class='title'>闪电快评</view>
-  </view>
-  <image src='../../images/icon/bg.png' style='height:calc(100vh - {{navigationHeight}});' mode='widthFix'></image>
 
-
-</view>
-<view wx:else class='root'>
-  <canvas canvas-id="canvas0" />
-  <canvas canvas-id="canvas1" />
-  <canvas canvas-id="canvas2" />
-  <canvas canvas-id="canvas3" />
-  <canvas canvas-id="canvas4" />
-  <view class='cover_view {{showAnony==""?"hide":"show"}}'>已开启匿名</view>
+<view class='root'>
+  
+  <!-- <view class='cover_view {{showAnony==""?"hide":"show"}}'>已开启匿名</view> --> 
   <view class='shadowview {{editing||showGuide?"show":"hide"}}' bindtap='touchShadow'></view>
 
-  <view class='guide_view {{showGuide?"show_message":"hide"}}'>
+  <!-- <view class='guide_view {{showGuide?"show_message":"hide"}}'>
     <image class='close' src='../../images/icon/ic_close.png' bindtap='closeGuideAction'></image>
     <image class='logo' src='../../images/icon/pic_success.png'></image>
     <view class='title'>评论成功啦!</view>
@@ -41,7 +24,8 @@
         <view>朋友圈</view>
       </view>
     </view>
-  </view>
+  </view> -->
+
   <view class='navigation_bar' style='height:{{navigationHeight}};' bindtap="doubleTap" bindtouchstart="touchStart" bindtouchend="touchEnd">
     <image class='back' src='../../images/icon/ic_title_back.png' bindtap='backAction'></image>
     <view class='line'></view>
@@ -49,14 +33,17 @@
     <view class='title'>闪电快评</view>
   </view>
 
-  <scroll-view class='scrollview' scroll-y scroll-into-view="{{scrollToView}}" bindscrolltolower="{{loadMoreData? 'refreshFooter': ''}}" style='height: calc(100vh - 110rpx - {{navigationHeight}} - {{videoHeight}});' scroll-top='{{scrollTopNum}}' enable-back-to-top="true" scroll-with-animation="true">
+  <scroll-view class='scrollview' scroll-y scroll-into-view="{{scrollToView}}" bindscrolltolower="{{loadMoreData? 'refreshFooter': ''}}" style='height: calc(100vh - 110rpx - {{navigationHeight}});' scroll-top='{{scrollTopNum}}' enable-back-to-top="true" scroll-with-animation="true">
+
+   <button open-type='share'>获取群id</button>
     <view class='comment' id='comment'>
       <view class='top' wx:if='{{dataList.length != 0}}'>
         <view class='logo'></view>
         <view class='title'>热门评论({{totalCount}})</view>
       </view>
       <block wx:for="{{dataList}}">
-        <view class='item' id='item{{index}}'>
+        <view class='item' style='height:200rpx;margin:30rpx;border:1px solid red;'>{{item.name}}</view>
+        <!-- <view class='item' id='item{{index}}'>
           <view class='top'>
             <image class='logo' src='{{item.fromUserLogoPath}}'></image>
             <view class='info'>
@@ -99,12 +86,9 @@
               <image src='{{item.thumbUpFlag?"../../images/icon/ic_like_hl.png":"../../images/icon/ic_like.png"}}'></image>
               <view class='{{item.thumbUpFlag?"highlight":""}}'>{{item.thumbUpNum > 0 ? item.thumbUpNum : "赞"}}</view>
             </view>
-            <!-- <view class='stamp' bindtap='stampAction' data-index='{{index}}' style='min-width:40rpx;'>
-              <image src='{{item.thumbDownFlag?"../../images/icon/ic_unlike_hl.png":"../../images/icon/ic_unlike.png"}}'></image>
-            </view> -->
           </view>
           <view class='line'></view>
-        </view>
+        </view> -->
       </block>
     </view>
     <view class='footerRefresh'>
@@ -113,10 +97,10 @@
     </view>
   </scroll-view>
 
-  <view class='recomment_image {{recommentImage == "" || !editing ?"hide":"show"}}' style='bottom:calc(204rpx + {{keyboardHeight}}px);'>
+  <!-- <view class='recomment_image {{recommentImage == "" || !editing ?"hide":"show"}}' style='bottom:calc(204rpx + {{keyboardHeight}}px);'>
     <image class='delete' src='../../images/icon/ic_deletepic.png' bindtap='deletePic' style='bottom:calc(335rpx + {{keyboardHeight}}px);'></image>
     <image class='img' src='{{recommentImage}}' bindtap='clickImage' data-image='{{recommentImage}}'></image>
-  </view>
+  </view> -->
 
   <view class='keyboard {{editing?"hide":"show"}}' catchtouchmove="preventTouchMove">
     <view class='background {{selectedOnceComment ? "hide_background" : "show_background"}}'>
@@ -128,7 +112,7 @@
     </view>
   </view>
 
-  <view class='keyboard_cover {{editing?"show_message":"hide"}}' style='bottom:{{keyboardHeight}}px' bindtap='blurAction'>
+  <view class='keyboard_cover {{editing?"show_message":"hide"}}' catchtouchmove="preventTouchMove" style='bottom:{{keyboardHeight}}px' bindtap='blurAction'>
     <view class='top'>
       <input placeholder-class='holder' placeholder='{{bottomHolder == "说说你的想法" ? "" : "回复 " + selectedToUserFromName + ":"}}' bindfocus='focusAction' bindblur='blurAction' focus='{{editing}}' bindinput='textInput' value='{{inputValue}}' confirm-type='done'
         cursor-spacing='54' adjust-position='' bindtap='inputAction'></input>
@@ -146,7 +130,7 @@
 
   </view>
 
-  <scroll-view class='sub_comment {{selectedOnceComment?"show":"hide"}}' scroll-y>
+  <!-- <scroll-view class='sub_comment {{selectedOnceComment?"show":"hide"}}' scroll-y>
     <view class='sub_bg'>
       <image src='../../images/icon/ic_close.png' bindtap='hideSubComment'></image>
       <view class='title'>全部{{subDataList.length}}条回复</view>
@@ -182,9 +166,6 @@
               <image src='{{selectedCommentInfo.thumbUpFlag?"../../images/icon/ic_like_hl.png":"../../images/icon/ic_like.png"}}'></image>
               <view class='{{selectedCommentInfo.thumbUpFlag?"highlight":""}}'>{{selectedCommentInfo.thumbUpNum > 0 ? selectedCommentInfo.thumbUpNum : "赞"}}</view>
             </view>
-            <!-- <view class='stamp' bindtap='stampAction' data-index='{{selectedCommentIndex}}' style='min-width:40rpx;'>
-              <image src='{{selectedCommentInfo.thumbDownFlag?"../../images/icon/ic_unlike_hl.png":"../../images/icon/ic_unlike.png"}}'></image>
-            </view> -->
           </view>
           <view class='line'></view>
         </view>
@@ -223,14 +204,11 @@
               <image src='{{item.thumbUpFlag?"../../images/icon/ic_like_hl.png":"../../images/icon/ic_like.png"}}'></image>
               <view class='{{item.thumbUpFlag?"highlight":""}}'>{{item.thumbUpNum > 0 ? item.thumbUpNum : "赞"}}</view>
             </view>
-            <!-- <view class='stamp' bindtap='subStampAction' data-index='{{index}}' style='min-width:40rpx;'>
-              <image src='{{item.thumbDownFlag?"../../images/icon/ic_unlike_hl.png":"../../images/icon/ic_unlike.png"}}'></image>
-            </view> -->
           </view>
           <view class='line'></view>
         </view>
       </block>
     </view>
-  </scroll-view>
+  </scroll-view> -->
 
 </view>

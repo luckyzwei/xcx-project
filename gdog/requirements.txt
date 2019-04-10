@@ -1,0 +1,11 @@
+aredis
+asyncpg
+aio-pika
+sanic
+sanic-jwt
+aiohttp
+Sanic-Cors
+requests
+ujson
+pillow
+locustio

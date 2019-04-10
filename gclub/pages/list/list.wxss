@@ -1,0 +1,87 @@
+/* pages/list/list.wxss */
+
+.scrollview{
+  background: #F7F7F7;
+}
+.topic-title{
+  font-family: PingFangSC-Medium;
+font-size: 36rpx;
+color: #000000;
+  padding: 30rpx;
+}
+.number-topic-item{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  background: #FFFFFF;
+}
+.number-topic-item .top{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: PingFangSC-Regular;
+color: #999999
+}
+.number-topic-item .top .img{
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.number-topic-item .top .name{
+font-size: 26rpx;
+margin: 0 20rpx;
+}
+.number-topic-item .top .time{
+font-size: 20rpx;
+}
+.number-topic-item .center{
+font-family: PingFangSC-Medium;
+font-size: 32rpx;
+color: #000000;
+margin-top: 23rpx;
+margin-bottom: 26rpx;
+}
+
+.number-topic-item .footer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.number-topic-item .footer .footer-msg,
+.number-topic-item .footer .footer-like
+{
+  font-family: PingFangSC-Regular;
+font-size: 26rpx;
+color: #B2B2B2;
+display: flex; 
+align-content:center;
+}
+.number-topic-item .footer .footer-like{
+  padding-left:88rpx; 
+  padding-right: 30rpx;
+}
+.number-topic-item .footer .msg-img{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx
+}
+.number-topic-item .footer .like-img{
+   width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.footer-like{
+  position: relative;
+}
+
+.hideButton{
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}

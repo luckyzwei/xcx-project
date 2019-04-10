@@ -1,0 +1,14 @@
+<view class="header navigation_bar" bindtap='_doubleTap' bindtouchstart='_touchStart' bindtouchend='_touchEnd'>
+    <view class="status-bar" style="height:{{heigthStatus}}px"></view>
+    <view class="title-bar" style="height:{{heightTitle}}px">
+      <view class="back-btn" wx:if='{{isBack}}'>
+        <image class='back' src='/images/icon/ic_title_back.png' catchtap='_backAction'></image>
+        <view class='line'></view>
+        <image class='home' src='/images/icon/ic_title_home.png' catchtap='_homeAction'></image>
+      </view>
+      <view class="back-btn" wx:else></view>
+      <view class='title'>话题精华</view>
+      <view class="tablet"></view>
+    </view>
+    <scroll-view style='display:none' scroll-y enable-back-to-top="true" scroll-with-animation="true" scroll-top='{{scrollTopNum}}'></scroll-view>
+  </view>
